@@ -5,13 +5,15 @@ $password = "";
 $pdo = new PDO($conn,$user,$password);
 $exec = $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-// $id = 14;
+$id = 14;
 
-// $query = $pdo->prepare("SELECT Day FROM doctoravailability WHERE DoctorId=:id");
-// $query->bindParam("id",$id,PDO::PARAM_INT);
-// $query->execute();
+$query = $pdo->prepare("SELECT * FROM doctoravailability WHERE DoctorId=:id");
+$query->bindParam("id",$id,PDO::PARAM_INT);
+$query->execute();
 
-// $rows = $query->fetchAll(PDO::FETCH_ASSOC);
+$rows = $query->fetchAll(PDO::FETCH_ASSOC);
+
+echo $rows;
 
 // $rows = $query->fetch(PDO::FETCH_ASSOC);
 

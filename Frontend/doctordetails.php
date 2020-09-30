@@ -115,10 +115,10 @@
                      <?php
 
  
-$query = $pdo->prepare("SELECT Day FROM doctoravailability WHERE DoctorId = :did");
+$query = $pdo->prepare("SELECT * FROM doctoravailability WHERE DoctorId = :did");
 $query->bindParam("did",$iid,PDO::PARAM_INT);
 $query->execute();
-$rows = $query->fetch(PDO::FETCH_ASSOC);
+$rows = $query->fetchAll(PDO::FETCH_ASSOC);
 
 
  if (isset($_POST['insertapp'])) {
