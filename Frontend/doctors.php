@@ -31,9 +31,21 @@ if (isset($_POST['btnsearch'])) {
 <div class="form-group" style="height: 100px;">
 
 <form class="form-group" action="" method="POST" style="margin-left: 300px ; margin-top: 50px;">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+    $('#doctorspec').on('change', function() {
+        $.get("speciality.php", function(data){
+            $("#doctorsgrid").empty().append(data);
+            $("#doctorsgird").html(data);
+            alert(data);
+  });
+    });
+});
+</script>
                            
-                           <div class="col-md-4" onchange="showCity(this.value)">
-                                <select name="speciality" class="form-control" >
+                           <div class="col-md-4">
+                                <select id="doctorspec" name="speciality" class="form-control" >
                               <option value="" disabled selected>Select Doctor Speciality</option>
                                 <?php
                                 $query = $pdo->query("Select * from specialities");
@@ -69,7 +81,7 @@ if (isset($_POST['btnsearch'])) {
     <!-- Team start -->
     <section class="team-area">
         <div class="container">
-            <div class="section-content">
+            <div id="doctorsgrid" class="section-content">
                 <div class="row">
 
                   <?php
@@ -124,3 +136,5 @@ else { ?>
     <!-- Team end -->
 
 <?php include 'footer.php'; ?>
+
+
