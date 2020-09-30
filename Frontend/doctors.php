@@ -35,7 +35,8 @@ if (isset($_POST['btnsearch'])) {
 <script>
 $(document).ready(function() {
     $('#doctorspec').on('change', function() {
-        $.get("speciality.php", function(data){
+        
+        $.get("speciality.php?id="+this.value+"", function(data){
             $("#doctorsgrid").empty().append(data);
             $("#doctorsgird").html(data);
             alert(data);

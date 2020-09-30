@@ -1,4 +1,66 @@
-<?php include 'header.php'; ?>
+
+
+
+
+
+<?php 
+
+include 'dbconnection.php';
+$msg = "";
+$error = "";
+$iid = $_GET['iid'];
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+
+if (isset($_POST['insertapp'])) {
+
+
+     
+$query = $pdo->prepare("SELECT * FROM doctoravailability WHERE DoctorId = :did");
+$query->bindParam("did",$iid,PDO::PARAM_INT);
+$query->execute();
+$rows = $query->fetchAll(PDO::FETCH_ASSOC);
+    
+    $d = $_POST['appday'];
+    $timestamp = strtotime($d);
+    $day = date("D", $timestamp);
+    
+    $availablehay = False;
+    
+    foreach ($rows as $timing) {
+        if ($timing['Day'] == $day) {
+            $availablehay = True;
+             
+        break;
+        }
+    }
+    
+        if($availablehay)
+        {
+            $query = $pdo->prepare("Insert into appointments (Date,DoctorId,PatientId,Day) values(:Date, :DoctorId, :PatientId,:Day)");
+         
+         
+    
+        $query->bindparam("Date", $_POST['appday'], PDO::PARAM_STR);
+        $query->bindparam("Day", $day, PDO::PARAM_STR);
+        $query->bindparam("DoctorId", $iid , PDO::PARAM_INT);
+        $query->bindparam("PatientId", $_SESSION['id'] , PDO::PARAM_INT);
+        
+        $query->execute();
+    
+         header("location: viewappointments.php?msg=your appointment has been setup successfully.");
+    
+          }      
+        else {
+            $error = "Doctor Not Availble on your selected Day..!";
+        
+        
+        }
+     }
+
+
+include 'header.php'; ?>
 
 <section class="inner-bg over-layer-black" style="background-image: url('img/bg/4.jpg')">
     <div class="container">
@@ -21,11 +83,10 @@
                 <div class="col-md-5">
 
                   <?php
-                  $msg = "";
-                  $error = "";
-                  $iid = $_GET['iid'];
+
+                 
                   
-                  include 'dbconnection.php';
+                
                   $query = $pdo->prepare("SELECT doctors.*, specialities.name as SpecName, cities.name as CityName from doctors
                                           JOIN specialities ON specialities.id = doctors.SpecialityId
                                           Join cities on cities.id = doctors.cityid
@@ -114,51 +175,12 @@
                             <div class="col-md-6">
                      <?php
 
- 
-$query = $pdo->prepare("SELECT * FROM doctoravailability WHERE DoctorId = :did");
-$query->bindParam("did",$iid,PDO::PARAM_INT);
-$query->execute();
-$rows = $query->fetchAll(PDO::FETCH_ASSOC);
 
 
- if (isset($_POST['insertapp'])) {
 
-    
-$d = $_POST['appday'];
-$timestamp = strtotime($d);
-$day = date("D", $timestamp);
-
-    if($day == $rows['day'] ){
-        $query = $pdo->prepare("Insert into appointments (Date,DoctorId,PatientId,Day) values(:Date, :DoctorId, :PatientId,:Day)");
-     
-     
-
-    $query->bindparam("Date", $_POST['appday'], PDO::PARAM_STR);
-    $query->bindparam("Day", $day, PDO::PARAM_STR);
-    $query->bindparam("DoctorId", $iid , PDO::PARAM_INT);
-    $query->bindparam("PatientId", $_SESSION['id'] , PDO::PARAM_INT);
-    
-    $query->execute();
-
-    // header("location: Index.php");
-
-      }
-      
-    else {
-        $error = "Doctor Not Availble on your selected Day..!";
-    
-    
-}
- }
 
                      ?>
-                        <?php
-
-if (session_status() == PHP_SESSION_NONE) {
-    session_start();
-}
- 
- ?>
+                       
 
 <?php if (isset($_SESSION['utid']) && $_SESSION['utid'] == 3) { ?>
 

@@ -1,3 +1,17 @@
+<?php
+$spid = $_GET['id'];
+$query = $pdo->query("SELECT doctors.*,specialities.name as SpecName, cities.name as CityName  from doctors
+                                        JOIN specialities on specialities.id = doctors.SpecialityId
+                                        Join cities on specialities.id = doctors.SpecialityId
+                                        where specialities.id =:id
+                                        ");
+                                        $query->bindparm("id",$spid, PDO::FETCH_ASSOC);
+                  $rows = $query->fetchAll(PDO::FETCH_ASSOC);
+
+
+?>
+
+
 <div id="doctorsgird" class="section-content">
                 <div class="row">
 
