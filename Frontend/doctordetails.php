@@ -172,14 +172,8 @@ include 'header.php'; ?>
                             <h4>BOOK YOUR APPOINTMENT</h4>
                             <div class="border-style-2 margin-bottom-30"></div>
 
-                            <div class="col-md-6">
-                     <?php
-
-
-
-
-
-                     ?>
+                            <div class="col-md-12">
+                  
                        
 
 <?php if (isset($_SESSION['utid']) && $_SESSION['utid'] == 3) { ?>
@@ -212,8 +206,8 @@ include 'header.php'; ?>
 
                          else { ?>  
                                 
-                            <p style="font-weight: bold;">For Appointment You Need to login or Register Yourself First</p>  
-                            <button class="btn btn-theme" ><a href="login.php">CLick here</a></button>
+                            <p style="font-weight: bold;" class="alert-danger">For Appointment You Need to login or Register Yourself First</p>  
+                            <a href="login.php" style="font-weight: bold; size: 20px;">For Login Or Register Click here</a>
                         
                             <?php } ?>
                     </div>

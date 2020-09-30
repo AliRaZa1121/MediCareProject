@@ -4,19 +4,14 @@
 <div class="row">
 
 <?php
-  include 'dbconnection.php';
-
   $cid = $_GET['cid'];
-  $sid = $_GET['sid'];
-
-
   
+  include 'dbconnection.php';
   $query = $pdo->prepare("SELECT doctors.*,specialities.name as SpecName , specialities.Id as SpecId, cities.name as CityName, cities.Id as CityId  from doctors
                         JOIN specialities on specialities.id = doctors.SpecialityId
-                        Join cities on cities.id = doctors.cityid where CityId =:cid and SpecId= :spid");
+                        Join cities on cities.id = doctors.cityid where CityId =:id ");
 
- $query->bindparam("cid",$cid,PDO::PARAM_INT);
- $query->bindparam("spid",$sid,PDO::PARAM_INT);
+ $query->bindparam("id",$cid,PDO::PARAM_INT);
  $query->execute();
  $rows = $query->fetchAll(PDO::FETCH_ASSOC);
  if (count($rows)>0) {

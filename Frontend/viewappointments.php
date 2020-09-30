@@ -1,4 +1,7 @@
-<?php include 'header.php'; ?>
+<?php include 'header.php';
+
+?>
+
 
     <section class="inner-bg over-layer-black" style="background-image: url('img/bg/4.jpg')">
         <div class="container">
@@ -18,6 +21,7 @@
     <section class="shoping-cart-area">
       <div class="container">
         <div class="row">
+      
           <div class="col-md-12">
             <div class="product-list">
               <table>

@@ -40,14 +40,25 @@ if(isset($_POST['btnlogin']))
 
 if(isset($_POST['btnregister']))
 {
-  if($_POST['password'] != $_POST['confirmpassword'] ){
-    $error = "Password Doesn't Match..!";
-  }
-// elseif ($rows['email'] == $_POST['email']) {
-//     $error1 = "Your Email Already has Registerd..!";
-// }
-  else {
+//     $query = $pdo->query("SELECT * from users ");
+//     $rows = $query->fetchAll(PDO::FETCH_ASSOC);
 
+//     $emails = false;
+//     $postemail = $_POST['email'];
+//    foreach ($rows as $row) {
+//        if ($postemail == $row['Email']) {
+//         $emails = true;
+//        break;
+ 
+//        }
+   
+//    }
+
+   if($_POST['password'] != $_POST['confirmpassword'] ){
+    $error = "Confirm Password Doesn't Match..!";
+  }
+   else {
+   
     $utid = 3;
     $query = $pdo->prepare("insert into users(Email,Password,UserTypeId) values(:email,:password,:usertypeid)");
     $query->bindparam("email",$_POST['email'],PDO::PARAM_STR);
@@ -67,9 +78,15 @@ if(isset($_POST['btnregister']))
     
     header("location: login.php");
 
-    
+     
+   }
 
-  }
+ 
+
+//   else {
+//     $error1 = "This Email Address already consist"; 
+
+//   }
 
 }
 

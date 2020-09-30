@@ -5,15 +5,15 @@ $password = "";
 $pdo = new PDO($conn,$user,$password);
 $exec = $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-$id = 14;
+// $id = 14;
 
-$query = $pdo->prepare("SELECT * FROM doctoravailability WHERE DoctorId=:id");
-$query->bindParam("id",$id,PDO::PARAM_INT);
-$query->execute();
+// $query = $pdo->prepare("SELECT * FROM doctoravailability WHERE DoctorId=:id");
+// $query->bindParam("id",$id,PDO::PARAM_INT);
+// $query->execute();
 
-$rows = $query->fetchAll(PDO::FETCH_ASSOC);
+// $rows = $query->fetchAll(PDO::FETCH_ASSOC);
 
-echo $rows;
+// echo $rows;
 
 // $rows = $query->fetch(PDO::FETCH_ASSOC);
 
@@ -25,12 +25,18 @@ echo $rows;
     // $timestamp = strtotime($date);
     // echo date("D", $timestamp);
 
-//     $query = $pdo->query("SELECT * from users ");
-//     $rows = $query->fetchAll(PDO::FETCH_ASSOC);
+    $query = $pdo->query("SELECT * from users ");
+    $rows = $query->fetchAll(PDO::FETCH_ASSOC);
 
-//    foreach ($rows as $row) {
-//    echo    $row['Email'];
-//    }
+    $emails = false;
+   foreach ($rows as $row) {
+       if ($_POST['email'] == $row) {
+        $emails = true;
+       break; 
+       $error1 = "This Email Address already consist";
+       }
+   
+   }
 
    
     

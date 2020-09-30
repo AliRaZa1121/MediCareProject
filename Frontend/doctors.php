@@ -28,24 +28,27 @@ if (isset($_POST['btnsearch'])) {
     ?>
 
    
-<div class="form-group" style="height: 100px;">
+<div class="form-group" style="height: 70px; width: 100%; margin-left: 200px;">
 
 <form class="form-group" action="" method="POST" style="margin-left: 300px ; margin-top: 50px;">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 <script>
+
 $(document).ready(function() {
     $('#doctorspec').on('change', function() {
         
-        $.get("speciality.php?id="+this.value+"", function(data){
+        $.get("speciality.php?sid="+this.value+"", function(data){
             $("#doctorsgrid").empty().append(data);
             $("#doctorsgird").html(data);
-            alert(data);
+            // alert(data);
+            
   });
     });
 });
 </script>
                            
-                           <div class="col-md-4">
+                           <div class="col-md-3">
                                 <select id="doctorspec" name="speciality" class="form-control" >
                               <option value="" disabled selected>Select Doctor Speciality</option>
                                 <?php
@@ -57,10 +60,22 @@ $(document).ready(function() {
                                 </select>
                             </div>
 
+                            <script>
+$(document).ready(function() {
+    $('#doctorcity').on('change', function() {
+        
+        $.get("city.php?cid="+this.value+"", function(data){
+            $("#doctorsgrid").empty().append(data);
+            $("#doctorsgrid").html(data);
+            
+            
+  });
+    });
+});
+</script>
                             
-                            
-                            <div class="col-md-4">
-                                <select name="city" class="form-control" >
+                            <div class="col-md-3">
+                                <select id="doctorcity" name="city" class="form-control" >
                               <option value="" disabled selected>Select City</option>
                                 <?php
                                 $query = $pdo->query("Select * from cities");
@@ -71,10 +86,7 @@ $(document).ready(function() {
                                 </select>
                             </div>
 
-                            <div class="col-md-4">
-                                    <button class="btn btn-theme" name="btnsearch" type="submit">Search</button>
-                                </div>
-
+                        
 </form>
 
 </div>
@@ -107,12 +119,12 @@ $(document).ready(function() {
                                 <li><a href="#"><i class="fa fa-behance"></i></a></li>
                             </ul>
                         </div>
-                        <div class="team-content">
+                        <div class="team-content" style="width: 400px;">
                             <h4><a href="#"><?php echo $row['Name'] ?></a></h4>
                             <h6><?php echo $row['SpecName'] ?></h6>
                             <h6><?php echo $row['CityName'] ?></h6>
                         </div>
-                        <div class="timetable">
+                        <div class="timetable"style="width: 400px;" >
                             
                             <a href="doctordetails.php?iid=<?php echo $row['Id'] ?>" class="btn-theme text-center btn-block"> Request A​n Appointment​​​</a>
                         </div>
