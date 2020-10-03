@@ -89,7 +89,7 @@ include("header.php");
 
             <div class="form-group">
               <label for="">Contact</label>
-              <input type="text" class="form-control" name="contact" value="<?php echo $row['Contact'] ?>">
+              <input type="text" class="form-control" name="contact" pattern="03[0-9]{9}" value="<?php echo $row['Contact'] ?>">
             </div>
 
             <div class="form-group">

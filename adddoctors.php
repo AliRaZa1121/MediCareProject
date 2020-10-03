@@ -52,7 +52,7 @@ include("header.php");
 
            <div class="form-group">
                  <label for="">Contact</label>
-                 <input type="number" class="form-control" name="contact">
+                 <input type="number" class="form-control" name="contact" pattern="03[0-9]{9}">
               </div>
 
 

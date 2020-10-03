@@ -18,22 +18,11 @@
   <!-- Custom styles for this template-->
   <link href="Backend/css/sb-admin-2.min.css" rel="stylesheet">
 
-  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.min.css"/>
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css"/>
  
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
-<script type="text/javascript" src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js"></script>
-
 </head>
 
 <body id="page-top">
-<script>
-  $(document).ready(function() {
-    $('table').DataTable();
-} );
-</script>
+
   <!-- Page Wrapper -->
   <div id="wrapper">
 
@@ -153,6 +142,9 @@
       <i class="fas fa-inbox"></i>
       <span>Messages</span></a>
   </li>
+  
+  
+  
   <li class="nav-item">
     <a class="nav-link" href="logout.php">
       <i class="fas fa-fw fa-user"></i>

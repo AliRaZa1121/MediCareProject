@@ -4,7 +4,7 @@ include("dbconnection.php");
 include("header.php");
 
 if (isset($_SESSION['utid']) && $_SESSION['utid'] == 1) {
-$query = $pdo->query("SELECT appointments.*,patients.Name as PName,doctors.Name as DName,specialities.Name as SpecName from
+$query = $pdo->query("SELECT appointments.*,patients.Name as PName,patients.Id as Pid,doctors.Name as DName,specialities.Name as SpecName from
 appointments JOIN doctors on doctors.id = appointments.doctorid JOIN patients on patients.id = appointments.patientid
 JOIN specialities on specialities.id = doctors.SpecialityId 
 ORDER BY `appointments`.`Id` DESC");
@@ -12,7 +12,7 @@ $rows = $query->fetchAll(PDO::FETCH_ASSOC);
 }
 
 else if (isset($_SESSION['utid']) && $_SESSION['utid'] == 2){
-  $query = $pdo->query("SELECT appointments.*,patients.Name as PName,doctors.Name as DName,specialities.Name as SpecName from appointments
+  $query = $pdo->query("SELECT appointments.*,patients.Name as PName,patients.Id as PId,doctors.Id as DId,doctors.Name as DName,specialities.Name as SpecName from appointments
                         JOIN doctors on doctors.id = appointments.doctorid
                         JOIN patients on patients.id = appointments.patientid
                         JOIN specialities on specialities.id = doctors.SpecialityId  where appointments.DoctorId=". $_SESSION['id']);
@@ -21,6 +21,29 @@ else if (isset($_SESSION['utid']) && $_SESSION['utid'] == 2){
 }
 
 ?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Appointments</title>
+  
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.min.css"/>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css"/>
+ 
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js"></script>
+
+</head>
+<script>
+  $(document).ready(function() {
+    $('table').DataTable();
+} );
+</script>
+
 
 
 
@@ -55,7 +78,8 @@ else if (isset($_SESSION['utid']) && $_SESSION['utid'] == 2){
                   <?php } else if($_SESSION['utid'] == 2){ ?>
                     <thead>
                       <tr>
-                        <th>Patient Name</th>
+                      <th>Id</th>
+                      <th>Patient Name</th>
                         <th>Day</th>
                         <th>Date</th>
                       </tr>
@@ -79,6 +103,7 @@ foreach ($rows as $row): ?>
     </tr>
   <?php } else if($_SESSION['utid'] == 2){ ?>
     <tr>
+    <td><?php echo $row['PId'] ?></td>    
       <td><?php echo $row['PName'] ?></td>
       <td><?php echo $row['Day'] ?></td>
       <td><?php echo $row['Date'] ?></td>

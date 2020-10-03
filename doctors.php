@@ -24,8 +24,20 @@ $rows = $query->fetchAll(PDO::FETCH_ASSOC);
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Doctors</title>
   
-</head>
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.min.css"/>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css"/>
+ 
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js"></script>
 
+</head>
+<script>
+  $(document).ready(function() {
+    $('table').DataTable();
+} );
+</script>
 
 <?php include("header.php"); ?>
 
@@ -50,6 +62,7 @@ $rows = $query->fetchAll(PDO::FETCH_ASSOC);
 
                     <thead>
                       <tr>
+                      <th>Id</th>
                         <th>Image</th>
                         <th>Name</th>
                         <th>Email</th>
@@ -68,6 +81,8 @@ if (count($rows)>0) {
 foreach ($rows as $row): ?>
 
     <tr>
+      
+    <td><?php echo $row['Id'] ?></td>
       <td><img src="uploading/<?php echo $row['Photo'] ?>" width="80px" height="80px" style="border-radius:100px" ></td>
       <td><?php echo $row['Name'] ?></td>
       <td><?php echo $row['UEmail'] ?></td>

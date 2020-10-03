@@ -2,6 +2,7 @@
 include 'dbconnection.php';
 
 $msg = "";
+$msg1 ="";
 $error = "";
 $error1 = "";
 if(isset($_POST['btnlogin']))
@@ -40,23 +41,30 @@ if(isset($_POST['btnlogin']))
 
 if(isset($_POST['btnregister']))
 {
-//     $query = $pdo->query("SELECT * from users ");
-//     $rows = $query->fetchAll(PDO::FETCH_ASSOC);
 
-//     $emails = false;
-//     $postemail = $_POST['email'];
-//    foreach ($rows as $row) {
-//        if ($postemail == $row['Email']) {
-//         $emails = true;
-//        break;
+    $query = $pdo->query("SELECT * from users ");
+    $rows = $query->fetchAll(PDO::FETCH_ASSOC);
+
+    $emails = "";
+    $postemail = $_POST['email'];
+    
+   foreach ($rows as $row) {
+       if ($postemail == $row['Email']) {
+        $emails = "1";
+       break;
  
-//        }
+       }
    
-//    }
+   }
 
    if($_POST['password'] != $_POST['confirmpassword'] ){
     $error = "Confirm Password Doesn't Match..!";
   }
+
+  elseif($emails > 0) {
+    $error1 = "This Email Address already consist"; 
+  }
+
    else {
    
     $utid = 3;
@@ -76,17 +84,12 @@ if(isset($_POST['btnregister']))
 
         
     
-    header("location: login.php");
-
+     $msg1= "Your Account has been registered..!! Please Login Now..";
      
    }
 
  
 
-//   else {
-//     $error1 = "This Email Address already consist"; 
-
-//   }
 
 }
 
@@ -117,7 +120,7 @@ if(isset($_POST['btnregister']))
               <div class="row">
                   <div class="col-md-12">
               <?php if ($msg!="") { ?>
-                <div class="row alert alert-danger">
+                <div class="row alert alert-danger"style="text-align: center;">
                   <?php echo $msg; ?>
                 </div>
                 </div>
@@ -126,8 +129,18 @@ if(isset($_POST['btnregister']))
 
               <div class="row">
                   <div class="col-md-12">
+              <?php if ($msg1!="") { ?>
+                <div class="row alert alert-success" style="text-align: center;">
+                  <?php echo $msg1; ?>
+                </div>
+                </div>
+                </div>
+              <?php } ?>
+
+              <div class="row">
+                  <div class="col-md-12">
               <?php if ($error1!="") { ?>
-                <div class="row alert alert-danger">
+                <div class="row alert alert-danger"style="text-align: center;">
                   <?php echo $error1; ?>
                 </div>
                 </div>
@@ -137,7 +150,7 @@ if(isset($_POST['btnregister']))
               <div class="row">
                   <div class="col-md-12">
               <?php if ($error!="") { ?>
-                <div class="row alert alert-danger">
+                <div class="row alert alert-danger"style="text-align: center;">
                   <?php echo $error; ?>
                 </div>
                 </div>
@@ -188,7 +201,7 @@ if(isset($_POST['btnregister']))
                                 <input type="email" name="email" class="form-control" placeholder="Enter Email"  required>
                             </div>
                             <div class="col-md-12">
-                                <input type="text" name="contact" class="form-control" placeholder="Enter Contact No." required>
+                                <input type="text" name="contact" class="form-control" placeholder="Enter Contact No." pattern="03[0-9]{9}" required>
                             </div>
                             <div class="col-md-6">
                                 <input type="password" name="password" class="form-control" placeholder="Enter Password" required>

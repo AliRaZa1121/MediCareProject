@@ -1,4 +1,4 @@
-<?php
+<!-- <?php
 $conn = "mysql:host=localhost;dbname=care";
 $user = "root";
 $password = "";
@@ -25,18 +25,52 @@ $exec = $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     // $timestamp = strtotime($date);
     // echo date("D", $timestamp);
 
+//     $query = $pdo->query("SELECT * from users ");
+//     $rows = $query->fetchAll(PDO::FETCH_ASSOC);
+
+//     $emails = false;
+//    foreach ($rows as $row) {
+//        if ($_POST['email'] == $row) {
+//         $emails = true;
+//        break; 
+//        $error1 = "This Email Address already consist";
+//        }
+   
+//    }
+// if(isset($_POST['btn']))
+// {
+
     $query = $pdo->query("SELECT * from users ");
     $rows = $query->fetchAll(PDO::FETCH_ASSOC);
 
-    $emails = false;
-   foreach ($rows as $row) {
-       if ($_POST['email'] == $row) {
-        $emails = true;
-       break; 
-       $error1 = "This Email Address already consist";
-       }
-   
-   }
+
+    // $postemail = $_POST['email'];
+    foreach ($rows as $row) {
+       echo $row['Email'];
+    }
+//    foreach ($rows as $row) {
+//        if ($postemail == $row['Email']) {
+//        echo "Match" ;
+//     }
+//  else{
+//      echo "Welcome";
+//  }
+       
 
    
-    
+   
+?>
+<form class="form" method="post" action="" name="form">
+                        
+       <div class="col-md-12">
+       <input type="email" name="email" class="form-control" placeholder="Enter Your Email" required>
+   </div>
+   <button class="btn btn-theme" name="btn" type="submit">LOGIN</button>
+                            
+</form>
+   
+   
+
+
+   
+     -->
