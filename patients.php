@@ -4,11 +4,17 @@ include("dbconnection.php");
 
 //Delete Query
 $query = $pdo->prepare("delete from patients where Id = :id");
-$query->bindparam("id",$_GET['id'],PDO::PARAM_INT); //for doctor
+$query->bindparam("id",$_GET['id'],PDO::PARAM_INT); 
 $query->execute();
+
 $query = $pdo->prepare("delete from users where Id = :id");
-$query->bindparam("id",$_GET['id'],PDO::PARAM_INT); //for doctor
+$query->bindparam("id",$_GET['id'],PDO::PARAM_INT); 
 $query->execute();
+
+$query = $pdo->prepare("delete from appointments where PatientId = :id");
+$query->bindparam("id",$_GET['id'],PDO::PARAM_INT); 
+$query->execute();
+
 
 $query = $pdo->query("SELECT patients.*,users.email as PEmail from patients JOIN users on users.id = patients.id ORDER BY `patients`.`Name` ASC");
 $rows = $query->fetchAll(PDO::FETCH_ASSOC);

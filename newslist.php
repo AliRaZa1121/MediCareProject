@@ -61,7 +61,7 @@ foreach ($rows as $row): ?>
       <td><?php echo $row['PublishedOn'] ?></td>
       <td>
 
-        <a href="newslist.php?id=<?php echo $row['Id'] ?>" class="btn btn-danger">Delete</a>
+        <a href="newslist.php?id=<?php echo $row['Id'] ?>" class="btn btn-danger" onclick="return confirm('Are you sure to Delete?');">Delete</a>
       </td>
     </tr>
 

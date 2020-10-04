@@ -146,7 +146,7 @@
   
   
   <li class="nav-item">
-    <a class="nav-link" href="logout.php">
+    <a class="nav-link" href="logout.php" onclick="return confirm('Are you sure to logout?');">
       <i class="fas fa-fw fa-user"></i>
       <span>Log Out</span></a>
   </li>
@@ -179,7 +179,7 @@
   </li>
 
   <li class="nav-item">
-    <a class="nav-link" href="logout.php">
+    <a class="nav-link" href="logout.php" onclick="return confirm('Are you sure to logout?');">
       <i class="fas fa-fw fa-user"></i>
       <span>Log Out</span></a>
   </li>

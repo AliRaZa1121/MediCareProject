@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 29, 2020 at 12:28 PM
+-- Generation Time: Oct 04, 2020 at 10:27 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.6
 
@@ -41,16 +41,17 @@ CREATE TABLE `appointments` (
 
 INSERT INTO `appointments` (`Id`, `Day`, `Date`, `PatientId`, `DoctorId`) VALUES
 (5, 'Tue', '2020-09-01', 20, 19),
-(15, NULL, '2020-09-23', 20, 14),
-(22, NULL, '2020-09-20', 23, 14),
-(23, NULL, '2020-09-23', 20, 14),
 (24, 'Sat', '2020-09-26', 21, 19),
 (25, 'Sat', '2020-09-26', 23, 14),
 (26, 'Sat', '2020-09-26', 23, 14),
 (27, 'Mon', '2020-09-28', 23, 14),
 (28, 'Mon', '2020-09-28', 23, 14),
 (29, 'Mon', '2020-09-28', 23, 14),
-(30, 'Mon', '2020-09-28', 23, 14);
+(30, 'Mon', '2020-09-28', 23, 14),
+(31, 'Wed', '2020-09-30', 28, 14),
+(32, 'Wed', '2020-09-30', 28, 14),
+(33, 'Fri', '2020-10-02', 28, 14),
+(34, 'Thu', '2020-10-08', 21, 19);
 
 -- --------------------------------------------------------
 
@@ -85,13 +86,6 @@ CREATE TABLE `contactus` (
   `Subject` varchar(100) NOT NULL,
   `Message` varchar(1000) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `contactus`
---
-
-INSERT INTO `contactus` (`Id`, `Name`, `Email`, `Subject`, `Message`) VALUES
-(1, 'aliraxa987@gmail.com', 'Zara Jeans', 'D', 'Hello');
 
 -- --------------------------------------------------------
 
@@ -142,7 +136,7 @@ CREATE TABLE `doctors` (
 --
 
 INSERT INTO `doctors` (`Id`, `Name`, `Contact`, `SpecialityId`, `Details`, `Photo`, `CityId`) VALUES
-(14, 'Shahid Ashraf', 3031234567, 3, 'PHD doctor!!!!!!!!!!!!!!!!!', '../uploading/d4.png', 1),
+(14, 'Shahid Ashraf', 3337654321, 3, 'PHD doctor!!!!!!!!!!!!!!!!!', '../uploading/d4.png', 1),
 (19, 'Aslamuddin Shah', 3302324221, 4, 'Good Doctor..!!', '../uploading/d3.png', 2),
 (22, 'Rashid Siddique', 3452035987, 5, 'PHD Doctor', 'dr-1.jpg', 3),
 (25, 'Dr Alam', 30312342, 6, 'Good Doctor', 'download.jpg', 2);
@@ -193,7 +187,12 @@ INSERT INTO `patients` (`Id`, `Name`, `Contact`) VALUES
 (21, 'Hamza', 3132296543),
 (23, 'Ali Raza', 3132296541),
 (28, 'Meer', 3032424244),
-(29, 'Saad', 141242385);
+(29, 'Saad', 141242385),
+(32, 'Rayyan', 213253246),
+(35, 'Hammad', 21400675),
+(36, 'Shah', 9576945),
+(37, 'Huma', 2123456789),
+(38, 'deer', 3001234567);
 
 -- --------------------------------------------------------
 
@@ -237,7 +236,7 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`Id`, `Email`, `Password`, `UserTypeId`) VALUES
 (2, 'admin@gmail.com', '123', 1),
-(14, 'shahid@gmail.com', '12345', 2),
+(14, 'shahid@gmail.com', '123', 2),
 (19, 'aslam@gmail.com', '123', 2),
 (20, 'qadir@gmail.com', '123', 3),
 (21, 'hamza@gmail.com', '123', 3),
@@ -246,7 +245,12 @@ INSERT INTO `users` (`Id`, `Email`, `Password`, `UserTypeId`) VALUES
 (24, 'admin2@gmail.com', '123', 1),
 (25, 'alam@gmail.com', '123', 2),
 (28, 'meer@gmail.com', '123', 3),
-(29, 'saad@gmail.com', '123', 3);
+(29, 'saad@gmail.com', '123', 3),
+(32, 'rayyan@gmail.com', '123', 3),
+(35, 'hammad@gmail.com', '123', 3),
+(36, 'shah@gmail.com', '123', 3),
+(37, 'hum@gmail.com', '123', 3),
+(38, 'deer@gmail.com', '123', 3);
 
 -- --------------------------------------------------------
 
@@ -347,7 +351,7 @@ ALTER TABLE `usertypeid`
 -- AUTO_INCREMENT for table `appointments`
 --
 ALTER TABLE `appointments`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT for table `cities`
@@ -371,13 +375,13 @@ ALTER TABLE `doctoravailability`
 -- AUTO_INCREMENT for table `news`
 --
 ALTER TABLE `news`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `patients`
 --
 ALTER TABLE `patients`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT for table `specialities`
@@ -389,7 +393,7 @@ ALTER TABLE `specialities`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT for table `usertypeid`

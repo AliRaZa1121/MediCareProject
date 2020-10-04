@@ -20,7 +20,7 @@ $query->bindparam("email",$_POST['email'],PDO::PARAM_STR);
 $query->bindparam("password",$_POST['password'],PDO::PARAM_STR);
 $query->execute();
 
-// header("location: patientsprofile.php");
+
 
 }
 

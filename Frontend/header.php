@@ -96,13 +96,18 @@
                                         <li class="dropdown">
                                             <a href="blogs.php" >Blogs </a>
                                         </li>
+
                                         <li class="dropdown">
+                                        <li><a href="viewappointments.php">My Appointments</a>
+                                        </li>
+
+                                        <!-- <li class="dropdown">
                                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <span data-hover="Doctors">Appointments <i class="fa fa-angle-down" aria-hidden="true"></i></span></a>
                                             <ul class="dropdown-menu">
                                                 <li><a href="appointment.php">Book Appointments</a></li>
                                                 <li><a href="viewappointments.php">View Appointments</a></li>
                                             </ul>
-                                        </li>
+                                        </li> -->
                                         <li class="dropdown">
                                             <a href="contact.php">Contact</a>
                                         </li>
@@ -156,7 +161,8 @@
                                             <ul class="dropdown-menu cart dropdown-animation">
                                               <li><a href="patientsprofile.php">View Profile</a></li>
                                               <li><a href="editpatientsprofile.php">Edit Profile</a></li>
-                                              <li><a href="logout.php">Logout</a></li>
+                                              
+                                              <li><a href="logout.php"onclick="return confirm('Are you sure to logout?');">Logout</a></li>
 
                                             </ul>
                                         </div>
