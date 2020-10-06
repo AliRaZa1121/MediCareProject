@@ -207,7 +207,7 @@ include 'header.php'; ?>
                          else { ?>  
                                 
                             <p style="font-weight: bold;" class="alert-danger">For Appointment You Need to login or Register Yourself First</p>  
-                            <a href="login.php" style="font-weight: bold; size: 20px;">For Login Or Register Click here</a>
+                            <a href="login.php"  class="btn btn-simple">For Login Or Register Click here</a>
                         
                             <?php } ?>
                     </div>

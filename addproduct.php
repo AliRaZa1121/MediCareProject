@@ -7,9 +7,10 @@ if(isset($_POST['submit']))
 
 move_uploaded_file($_FILES['photo']["tmp_name"],'uploading/'.$_FILES['photo']["name"]);
 
-  $sql = "insert into products(Name,Price,CategoryId,Photo) values(:name,:price,:categoryid,:photo)";
+  $sql = "insert into products(Name,Price,CategoryId,Photo,Details) values(:name,:price,:categoryid,:photo,:details)";
   $query = $pdo->prepare($sql);
   $query->bindparam("name",$_POST['name'],PDO::PARAM_STR);
+  $query->bindparam("details",$_POST['details'],PDO::PARAM_STR);
   $query->bindparam("price",$_POST['price'],PDO::PARAM_STR);
   $query->bindparam("categoryid",$_POST['categoryid'],PDO::PARAM_STR);
   $query->bindparam("photo",$_FILES['photo']['name'],PDO::PARAM_STR);
@@ -37,7 +38,10 @@ include("header.php");
              <input type="number"class="form-control" name="price">
           </div>
 
-           
+          <div class="form-group">
+              <label for="">Details</label>
+              <input type="text"class="form-control" name="details">
+           </div>
 
           <div class="form-group">
             <label for="">Category</label>

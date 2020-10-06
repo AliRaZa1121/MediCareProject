@@ -92,7 +92,7 @@ foreach ($rows as $row): ?>
       <td><?php echo $row['Details'] ?></td>
       <td>
         <a href="editdoctor.php?id=<?php echo $row['Id'] ?>" class="btn btn-primary">Edit</a>
-        <a href="doctors.php?id=<?php echo $row['Id'] ?>" class="btn btn-danger">Delete</a>
+        <a href="doctors.php?id=<?php echo $row['Id'] ?>" onclick="return confirm('Are you sure to delete doctor?');" class="btn btn-danger">Delete</a>
       </td>
     </tr>
 

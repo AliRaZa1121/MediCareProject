@@ -1,6 +1,7 @@
 
 <?php include 'header.php';
 
+$msg = "";
 if(isset($_POST['send']))
 {
 
@@ -12,6 +13,7 @@ if(isset($_POST['send']))
     $query->execute();
 
 
+    $msg= "Thank You, Your Message has been sent..";
   }
 
 
@@ -39,6 +41,16 @@ if(isset($_POST['send']))
                         <div class="section-title margin-left-20 ">
                             <h6>Contact</h6>
                             <h2>Get in Touch</h2>
+
+                            <div class="row">
+                  <div class="col-md-12">
+              <?php if ($msg!="") { ?>
+                <div class="row alert alert-success"style="text-align: center;">
+                  <?php echo $msg; ?>
+                </div>
+                </div>
+                </div>
+              <?php } ?>
                             <div class="small-line-border-2"></div>
                         </div>
                         <form class="form" method="post" action="">

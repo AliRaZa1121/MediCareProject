@@ -72,7 +72,7 @@ foreach ($rows as $row): ?>
 
                                <!-- Modal footer -->
                                <div class="modal-footer">
-                                   <a href="contact.php?id=<?php echo $row['Id'] ?>" class="btn btn-danger" >Delete</a>
+                                   <a href="contact.php?id=<?php echo $row['Id'] ?>" onclick="return confirm('Are you sure to delete?');" class="btn btn-danger" >Delete</a>
                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
                                </div>
 

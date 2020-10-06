@@ -61,7 +61,7 @@ foreach ($rows as $row): ?>
       <td><?php echo $row['PEmail'] ?></td>
       <td><?php echo $row['Contact'] ?></td>
       <td>
-        <a href="doctors.php?id=<?php echo $row['Id'] ?>" class="btn btn-danger">Delete</a>
+        <a href="doctors.php?id=<?php echo $row['Id'] ?>" onclick="return confirm('Are you sure to delete patient records?');" class="btn btn-danger">Delete</a>
       </td>
     </tr>
 

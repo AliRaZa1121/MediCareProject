@@ -63,6 +63,7 @@ $rows = $query->fetchAll(PDO::FETCH_ASSOC);
                         <th>Name</th>
                         <th>Category</th>
                         <th>Price</th>
+                        <th>Details</th>
                         <th class="text-center">Actions</th>
                       </tr>
                     </thead>
@@ -80,9 +81,10 @@ foreach ($rows as $row): ?>
       <td><?php echo $row['Name'] ?></td>
       <td><?php echo $row['CateName'] ?></td>
       <td ><?php echo $row['Price'] ?></td>
+      <td ><?php echo $row['Details'] ?></td>  
       <td style="text-align: center;">
         <a href="editproduct.php?id=<?php echo $row['Id'] ?>" class="btn btn-primary">Edit</a>
-        <a href="products.php?id=<?php echo $row['Id'] ?>" class="btn btn-danger">Delete</a>
+        <a href="products.php?id=<?php echo $row['Id'] ?>" onclick="return confirm('Are you sure to delete Product?');" class="btn btn-danger">Delete</a>
       </td>
     </tr>
 

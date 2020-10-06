@@ -107,17 +107,20 @@
                                         <li><a href="viewappointments.php">My Appointments</a>
                                         </li>
 
-                                        <li class="dropdown">
-                                        <li><a href="product.php">Store</a></li>
-                                        </li>
-
                                         <!-- <li class="dropdown">
+                                        <li><a href="products.php">Store</a></li>
+                                        </li> -->
+
+                                        <li class="dropdown">
                                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <span data-hover="Doctors">Store <i class="fa fa-angle-down" aria-hidden="true"></i></span></a>
                                             <ul class="dropdown-menu">
-                                                <li><a href="product.php">Products</a></li>
-                                                <li><a href="viewappointments.php">View Cart</a></li>
+                                                <li><a href="products.php">Products</a></li>
+                                                <li><a href="cart.php">View Cart</a></li>
+                                                <li><a href="checkout.php">Check out</a></li>
                                             </ul>
-                                        </li> -->
+                                        </li>
+
+
                                         <li class="dropdown">
                                             <a href="contact.php">Contact</a>
                                         </li>
@@ -203,10 +206,17 @@
                                           </li>
 
                                           
+                                        <!-- <li class="dropdown">
+                                        <li><a href="products.php">Store</a></li>
+                                        </li> -->
                                         <li class="dropdown">
-                                        <li><a href="product.php">Store</a></li>
+                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <span data-hover="Doctors">Store <i class="fa fa-angle-down" aria-hidden="true"></i></span></a>
+                                            <ul class="dropdown-menu">
+                                                <li><a href="products.php">Products</a></li>
+                                                <li><a href="cart.php">View Cart</a></li>
+                                                <li><a href="checkout.php">Check out</a></li>
+                                            </ul>
                                         </li>
-
                                           <li class="dropdown">
                                               <a href="contact.php">Contact</a>
                                           </li>      
