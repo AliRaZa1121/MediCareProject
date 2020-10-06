@@ -55,14 +55,18 @@
         MAIN
       </div>
 
-<?php session_start(); ?>
+<?php session_start();
+if ($_SESSION['utid'] == null) {
+   header("location: FrontEnd/index.php");
+}
+ ?>
 
 <?php if (isset($_SESSION['utid']) && $_SESSION['utid'] == 1) { ?>
 
   <!-- Nav Item - Pages Collapse Menu -->
   <li class="nav-item">
     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-      <i class="fas fa-fw fa-cog"></i>
+      <i class="fas fa-user-nurse"></i>
       <span>Doctors</span>
     </a>
     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
@@ -106,6 +110,25 @@
       <i class="fas fa-fw fa-user"></i>
       <span>Appointments</span></a>
   </li>
+
+   <!-- Divider -->
+   <hr class="sidebar-divider">
+
+<!-- Heading -->
+<div class="sidebar-heading">
+  Shopping
+</div>
+
+<li class="nav-item">
+    <a class="nav-link" href="products.php">
+      <i class="fas fa-fw fa-user"></i>
+      <span>Products</span></a>
+
+      <li class="nav-item">
+    <a class="nav-link" href="categories.php">
+      <i class="fas fa-fw fa-user"></i>
+      <span>Products Categories</span></a>
+
 
   <!-- Divider -->
   <hr class="sidebar-divider">

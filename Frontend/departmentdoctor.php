@@ -1,4 +1,12 @@
 <?php include 'header.php'; 
+$sid = $_GET['id'];
+
+$query = $pdo->prepare("SELECT * from specialities where specialities.id =:id ");
+
+                 $query->bindparam("id",$sid,PDO::PARAM_INT);
+                 $query->execute();
+                 $rows = $query->fetch(PDO::FETCH_ASSOC);
+                 
 ?>
 
 
@@ -7,7 +15,7 @@
             <div class="row">
                 <div class="col-md-4">
                     <div class="mini-title inner-style-2">
-                        <h3>Department Doctors</h3>
+                        <h3><?php echo $rows['Name'] ?> Doctors</h3>
                         <p><a href="index-one.html">Home</a> <span class="fa fa-angle-right"></span> <a href="#">Our Doctor</a></p>
                     </div>
                 </div>
@@ -23,7 +31,7 @@
                 <div class="row">
 
                 <?php
-                  $sid = $_GET['id'];
+                  
                   
                   include 'dbconnection.php';
                   $query = $pdo->prepare("SELECT doctors.*,specialities.name as SpecName , specialities.Id as SpecId, cities.name as CityName  from doctors

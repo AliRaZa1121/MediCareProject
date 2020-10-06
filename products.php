@@ -3,17 +3,13 @@
 include("dbconnection.php");
 
 //Delete Query
-$query = $pdo->prepare("delete from doctors where Id = :id");
-$query->bindparam("id",$_GET['id'],PDO::PARAM_INT); //for doctor
-$query->execute();
-$query = $pdo->prepare("delete from users where Id = :id");
+$query = $pdo->prepare("delete from products where Id = :id");
 $query->bindparam("id",$_GET['id'],PDO::PARAM_INT); //for doctor
 $query->execute();
 
-$query = $pdo->query("SELECT doctors.*,cities.Name as CityName,users.email as UEmail,specialities.Name as SpecName  from doctors
-  JOIN users on users.id = doctors.id
-  JOIN cities ON doctors.CityId = cities.Id
-  JOIN specialities on specialities.id = doctors.SpecialityId");
+
+$query = $pdo->query("SELECT products.*,productcategories.Name as CateName from products
+  JOIN productcategories on productcategories.id = products.CategoryId");
 $rows = $query->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
@@ -22,7 +18,7 @@ $rows = $query->fetchAll(PDO::FETCH_ASSOC);
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Products</title>
+  <title>Doctors</title>
   
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.min.css"/>
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css"/>
@@ -49,12 +45,12 @@ $rows = $query->fetchAll(PDO::FETCH_ASSOC);
 
             <div class="card shadow mb-4">
               <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">DOCTORS</h6>
+                <h6 class="m-0 font-weight-bold text-primary">PRODUCTS</h6>
               </div>
 
             <div class="card shadow mb-4">
               <div class="card-header py-3">
-                <a href="adddoctors.php" class="btn btn-primary">Add New </a>
+                <a href="addproduct.php" class="btn btn-primary">Add New </a>
               </div>
 <hr>
                 <div class="table-responsive">
@@ -62,14 +58,11 @@ $rows = $query->fetchAll(PDO::FETCH_ASSOC);
 
                     <thead>
                       <tr>
-                      <th>Id</th>
+                        <th>Id</th>
                         <th>Image</th>
                         <th>Name</th>
-                        <th>Email</th>
-                        <th>Contact</th>
-                        <th>Speciality</th>
-                        <th>City</th>
-                        <th>Details</th>
+                        <th>Category</th>
+                        <th>Price</th>
                         <th class="text-center">Actions</th>
                       </tr>
                     </thead>
@@ -85,14 +78,11 @@ foreach ($rows as $row): ?>
     <td><?php echo $row['Id'] ?></td>
       <td><img src="uploading/<?php echo $row['Photo'] ?>" width="80px" height="80px" style="border-radius:100px" ></td>
       <td><?php echo $row['Name'] ?></td>
-      <td><?php echo $row['UEmail'] ?></td>
-      <td><?php echo $row['Contact'] ?></td>
-      <td><?php echo $row['SpecName'] ?></td>
-      <td><?php echo $row['CityName'] ?></td>
-      <td><?php echo $row['Details'] ?></td>
-      <td>
-        <a href="editdoctor.php?id=<?php echo $row['Id'] ?>" class="btn btn-primary">Edit</a>
-        <a href="doctors.php?id=<?php echo $row['Id'] ?>" class="btn btn-danger">Delete</a>
+      <td><?php echo $row['CateName'] ?></td>
+      <td ><?php echo $row['Price'] ?></td>
+      <td style="text-align: center;">
+        <a href="editproduct.php?id=<?php echo $row['Id'] ?>" class="btn btn-primary">Edit</a>
+        <a href="products.php?id=<?php echo $row['Id'] ?>" class="btn btn-danger">Delete</a>
       </td>
     </tr>
 

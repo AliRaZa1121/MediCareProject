@@ -36,6 +36,7 @@ $row = $query->fetch(PDO::FETCH_ASSOC);
                             </ul>
                             <h3><a href="#"><?php echo $row['Title'] ?></a></h3>
                             <p style=" color: #666; font-weight: bold;"><?php echo $row['ShortDiscription'] ?></p>
+                            <hr>
                             <p><?php echo $row['Content'] ?></p>
                             </div>
                     </div>

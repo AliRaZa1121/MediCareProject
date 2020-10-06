@@ -42,6 +42,7 @@ $rows = $query->fetchAll(PDO::FETCH_ASSOC);
 
                     <thead>
                       <tr>
+                        <th>Id</th>
                         <th>Name</th>
                         <th>Email</th>
                         <th>Contact</th>
@@ -55,6 +56,7 @@ if (count($rows)>0) {
 foreach ($rows as $row): ?>
 
     <tr>
+    <td><?php echo $row['Id'] ?></td>
       <td><?php echo $row['Name'] ?></td>
       <td><?php echo $row['PEmail'] ?></td>
       <td><?php echo $row['Contact'] ?></td>

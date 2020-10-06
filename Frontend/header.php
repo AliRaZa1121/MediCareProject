@@ -78,10 +78,16 @@
                               if (session_status() == PHP_SESSION_NONE) {
                                   session_start();
                               }
-                               
+                            // if ($_SESSION['utid']==null) {
+                            //     header("location: index.php");
+                            // }
+                             
                                ?>
 
-                              <?php if (isset($_SESSION['utid']) && $_SESSION['utid'] == 3) { ?>
+                              <?php
+                             
+                              
+                              if (isset($_SESSION['utid']) && $_SESSION['utid'] == 3) { ?>
                                         <li class="dropdown">
                                             <a href="index.php">Home</span></a>
                                         </li>
@@ -101,11 +107,15 @@
                                         <li><a href="viewappointments.php">My Appointments</a>
                                         </li>
 
+                                        <li class="dropdown">
+                                        <li><a href="product.php">Store</a></li>
+                                        </li>
+
                                         <!-- <li class="dropdown">
-                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <span data-hover="Doctors">Appointments <i class="fa fa-angle-down" aria-hidden="true"></i></span></a>
+                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <span data-hover="Doctors">Store <i class="fa fa-angle-down" aria-hidden="true"></i></span></a>
                                             <ul class="dropdown-menu">
-                                                <li><a href="appointment.php">Book Appointments</a></li>
-                                                <li><a href="viewappointments.php">View Appointments</a></li>
+                                                <li><a href="product.php">Products</a></li>
+                                                <li><a href="viewappointments.php">View Cart</a></li>
                                             </ul>
                                         </li> -->
                                         <li class="dropdown">
@@ -113,49 +123,56 @@
                                         </li>
 
                                         <li>
-                                            <div class="dropdown-buttons">
-                                                <!-- Search box Start -->
-                                                <!-- <div class="btn-group menu-search-box">
-                                                    <button type="button" class="btn dropdown-toggle" id="header-drop-3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="icon icon-Search"></i></button>
-
-                                                    <ul class="dropdown-menu dropdown-menu-right dropdown-animation" aria-labelledby="header-drop-3">
-                                                        <li>
-
-                                                            <form role="search" class="search-box" method="get" action="search.php">
-                                                              
-                                                            <div class="form-group" style=" width: 100%;">
-                                                                <label for="">Select Doctor's Speciality:</label>
-                                                                <select class="form-control" name="speciality">
-                                                                  <option value="" disabled selected>Select Specialty</option>
-                                                                  <?php
-                                                                  $query = $pdo->query("Select * from specialities");
-                                                                  $rows = $query->fetchAll(PDO::FETCH_ASSOC);
-                                                                  foreach ($rows as $row): ?>
-                                                                    <option value="<?php echo $row['Id'] ?>"><?php echo $row['Name'] ?></option>
-                                                                  <?php endforeach; ?>
-                                                                </select>
-                                                              </div>
-                                                              <div class="form-group">
-                                                                <label for="">Select Your City:</label>
-                                                                <select class="form-control" name="city">
-                                                                  <option value="" disabled selected>Select City</option>
-                                                                  <?php
-                                                                  $query = $pdo->query("Select * from cities");
-                                                                  $crows = $query->fetchAll(PDO::FETCH_ASSOC);
-                                                                  foreach ($crows as $crow): ?>
-
-                                                                    <option value="<?php echo $crow['Id'] ?>"><?php echo $crow['Name'] ?></option>
-                                                                  <?php endforeach; ?>
-                                                                </select>
-                                                              </div>
-                                                                <div class="form-group">
-                                                                    <input type="submit" class="btn btn-success" name="btnsearch" value="Search" style="background-color:#00B092;color:white;border:none;margin-top:15px">
-                                                                </div>
-                                                              </form>
-                                                        </li>
-                                                    </ul>
-                                                </div> -->
-                                                <!-- Search box End -->
+                                        <div class="dropdown-buttons">
+                                        <div class="btn-group">
+                                            <button type="button" class="btn dropdown-toggle" id="header-drop-4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="icon icon-ShoppingCart"></i><span class="menu-cart">8</span></button>
+                                            <ul class="dropdown-menu dropdown-menu-right cart dropdown-animation" aria-labelledby="header-drop-4">
+                                                <li>
+                                                    <table class="table table-hover" style="margin-right: 50px;">
+                                                        <thead>
+                                                        <tr>
+                                                            <th class="quantity">QTY</th>
+                                                            <th class="product">Product</th>
+                                                            <th class="amount">Subtotal</th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                        <tr>
+                                                            <td class="quantity">2 x</td>
+                                                            <td class="product"><a href="shop-product.html">Android 4.4 Smartphone</a><span class="small">4.7" Dual Core 1GB</span></td>
+                                                            <td class="amount">$199.00</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="quantity">3 x</td>
+                                                            <td class="product"><a href="shop-product.html">Android 4.2 Tablet</a><span class="small">7.3" Quad Core 2GB</span></td>
+                                                            <td class="amount">$299.00</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="quantity">3 x</td>
+                                                            <td class="product"><a href="shop-product.html">Desktop PC</a><span class="small">Quad Core 3.2MHz, 8GB RAM, 1TB Hard Disk</span></td>
+                                                            <td class="amount">$1499.00</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="total-quantity" colspan="2"><strong>Total 8 Items</strong></td>
+                                                            <td class="total-amount"><strong>$1997.00</strong></td>
+                                                        </tr>
+                                                        </tbody>
+                                                    </table>
+                                                    <div class="panel-body text-right">
+                                                        <a href="#" class="menu-shop-btn">View Cart</a>
+                                                        <a href="#" class="menu-shop-btn">Checkout</a>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        </div>
+                                        </li>
+                                        
+                                            
+                                                
+                                                <!-- Profile box End -->
+                                                <li>
+                                        <div class="dropdown-buttons">
                                                <div class="btn-group">
                                             <button type="button" class="btn dropdown-toggle" id="header-drop-4" data-toggle="dropdown"><i class="fa fa-user"></i><span class="menu-cart">8</span></button>
                                             <ul class="dropdown-menu cart dropdown-animation">
@@ -166,6 +183,8 @@
 
                                             </ul>
                                         </div>
+                                        </div>
+                                        </li>
 
                                       <?php } else { ?>
 
@@ -183,69 +202,65 @@
                                               <a href="blogs.php" >Blogs </a>
                                           </li>
 
+                                          
+                                        <li class="dropdown">
+                                        <li><a href="product.php">Store</a></li>
+                                        </li>
+
                                           <li class="dropdown">
                                               <a href="contact.php">Contact</a>
-                                          </li>
+                                          </li>      
 
-
-                                          <li>
-                                              <div class="dropdown-buttons">
-                                                  <div class="btn-group menu-search-box">
-                                                      <button type="button" class="btn dropdown-toggle" id="header-drop-3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="icon icon-Search"></i></button>
-
-                                                      <ul class="dropdown-menu dropdown-menu-right dropdown-animation" aria-labelledby="header-drop-3">
-                                                          <li>
-
-                                                              <form role="search" class="search-box" method="get" action="search.php">
-                                                                <div class="form-group">
-                                                                  <label for="">Select Doctor's Speciality:</label>
-                                                                  <select class="form-control" name="speciality">
-                                                                    <option value="" disabled selected>Select Specialty</option>
-                                                                    <?php
-                                                                    $query = $pdo->query("Select * from specialities");
-                                                                    $rows = $query->fetchAll(PDO::FETCH_ASSOC);
-                                                                    foreach ($rows as $row): ?>
-                                                                      <option value="<?php echo $row['Id'] ?>"><?php echo $row['Name'] ?></option>
-                                                                    <?php endforeach; ?>
-                                                                  </select>
-                                                                </div>
-                                                                <div class="form-group">
-                                                                  <label for="">Select Your City:</label>
-                                                                  <select class="form-control" name="city">
-                                                                    <option value="" disabled selected>Select City</option>
-                                                                    <?php
-                                                                    $query = $pdo->query("Select * from cities");
-                                                                    $crows = $query->fetchAll(PDO::FETCH_ASSOC);
-                                                                    foreach ($crows as $crow): ?>
-
-                                                                      <option value="<?php echo $crow['Id'] ?>"><?php echo $crow['Name'] ?></option>
-                                                                    <?php endforeach; ?>
-                                                                  </select>
-                                                                </div>
-                                                                <div class="form-group">
-                                                                  <label for="">Custom Search:</label>
-                                                                    <input type="text" class="form-control" name="keyword" placeholder="Enter Your Search">
-                                                                </div>
-                                                                  <div class="form-group">
-                                                                      <input type="submit" class="btn btn-success" name="btnsearch" value="Search" style="background-color:#00B092;color:white;border:none;margin-top:15px">
-                                                                  </div>
-                                                                </form>
-                                                          </li>
-                                                      </ul>
-                                                  </div>
-                                                </div>
+                                         
+                                      <li style="margin-top: 20px;">
+                                          <div class="btn-group">
+                                            <button type="button" class="btn dropdown-toggle" id="header-drop-4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="icon icon-ShoppingCart"></i><span class="menu-cart">8</span></button>
+                                            <ul class="dropdown-menu dropdown-menu-right cart dropdown-animation" aria-labelledby="header-drop-4">
+                                                <li>
+                                                    <table class="table table-hover">
+                                                        <thead>
+                                                        <tr>
+                                                            <th class="quantity">QTY</th>
+                                                            <th class="product">Product</th>
+                                                            <th class="amount">Subtotal</th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                        <tr>
+                                                            <td class="quantity">2 x</td>
+                                                            <td class="product"><a href="shop-product.html">Android 4.4 Smartphone</a><span class="small">4.7" Dual Core 1GB</span></td>
+                                                            <td class="amount">$199.00</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="quantity">3 x</td>
+                                                            <td class="product"><a href="shop-product.html">Android 4.2 Tablet</a><span class="small">7.3" Quad Core 2GB</span></td>
+                                                            <td class="amount">$299.00</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="quantity">3 x</td>
+                                                            <td class="product"><a href="shop-product.html">Desktop PC</a><span class="small">Quad Core 3.2MHz, 8GB RAM, 1TB Hard Disk</span></td>
+                                                            <td class="amount">$1499.00</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="total-quantity" colspan="2"><strong>Total 8 Items</strong></td>
+                                                            <td class="total-amount"><strong>$1997.00</strong></td>
+                                                        </tr>
+                                                        </tbody>
+                                                    </table>
+                                                    <div class="panel-body text-right">
+                                                        <a href="#" class="menu-shop-btn">View Cart</a>
+                                                        <a href="#" class="menu-shop-btn">Checkout</a>
+                                                    </div>
                                                 </li>
+                                            </ul>
+                                        </div>
+</li>
 
-                                                <!-- <li class="dropdown">
-                                                    <a href="login.php">Login/Register</a>
-                                                </li> -->
-
-                                          <li class="dropdown">
+                                       <li class="dropdown">
                                             <div class="dropdown-buttons">
                                               <a style="font-weight: bold; line-height: 30px;" href="login.php">Login / Register</a>
                                             </div>
                                           </li>
-
 
                                               <?php } ?>
 
