@@ -84,7 +84,7 @@ header("location: doctors.php");
 
             <div class="form-group">
               <label for="">Contact</label>
-              <input type="text" class="form-control" name="contact" value="<?php echo $row['Contact'] ?>">
+              <input type="text" class="form-control" name="contact"  pattern="03[0-9]{9}"  value="<?php echo $row['Contact'] ?>">
             </div>
 
             <div class="form-group">
@@ -140,7 +140,7 @@ header("location: doctors.php");
 
             <div class="col-md-2">
               <div class="form-group">
-              <img src="uploading/<?php echo $row['Photo'] ?>" width="130px" height="130px" style="border-radius:100px;border:2px solid #4e73df;">
+              <img src="uploading/<?php echo $row['Photo'] ?>" width="130px" height="130px" style="border-radius:100px;border:1px solid #CCC;">
               </div>
             </div>
 

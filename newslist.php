@@ -14,8 +14,6 @@ $rows = $query->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <?php include("header.php"); ?>
-
-        <!-- Begin Page Content -->
         <div class="container-fluid">
 
           <!-- Page Heading -->
@@ -56,7 +54,29 @@ foreach ($rows as $row): ?>
       <td><img src="uploading/<?php echo $row['NewsCover'] ?>" width="80px" height="80px" style="border-radius:100px" ></td>
       <td><?php echo $row['Title'] ?></td>
       <td><?php echo $row['ShortDiscription'] ?></td>
-      <td><?php echo $row['Content'] ?></td>
+      <!-- Trigger the modal with a button -->
+<td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">Content</button></td>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">New Content</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <?php echo $row['Content'] ?>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+      
       <td><?php echo $row['Author'] ?></td>
       <td><?php echo $row['PublishedOn'] ?></td>
       <td>
@@ -105,26 +125,7 @@ else { ?>
     <i class="fas fa-angle-up"></i>
   </a>
 
-  <!-- Logout Modal-->
-  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">×</span>
-          </button>
-        </div>
-        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-        <div class="modal-footer">
-          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <a class="btn btn-primary" href="logout.php">Logout</a>
-        </div>
-      </div>
-    </div>
-  </div>
-
-
+  
   <!-- Core plugin JavaScript-->
   <script src="Backend/vendor/jquery-easing/jquery.easing.min.js"></script>
 

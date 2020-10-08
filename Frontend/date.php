@@ -74,3 +74,20 @@ $exec = $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
    
      -->
+
+
+     <div class="blog-item">
+                <div class="blog-images">
+                    <div class="blog-img"><a href="#"><img src="../uploading/<?php echo $row['Photo'] ?>" alt=""></a></div>
+                </div>
+                <div class="blog-content">
+                    <a href="#"><h4><?php echo $row['Name'] ?></h4></a>
+                    <!-- <a href="#"><h6 class="color-defult text-lowercase"></h6></a>
+                    <div class="blog-date margin-bottom-20 margin-top-30"> -->
+                        <h3>$ <?php echo $row['Price'] ?><sub>/Only</sub></h3>
+                    </div>
+                   
+                    <p style="margin-left: 50px;"><?php echo $row['Details']?>.</p>
+                    <a href="#"  class="btn btn-simple" style="width: 100%;">Add to Cart</a>
+                    
+                </div>

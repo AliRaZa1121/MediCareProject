@@ -212,22 +212,11 @@ include 'header.php'; ?>
                             <?php } ?>
                     </div>
 
-                            <!-- <button type="button" style="background-color: #00B092;" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Get Appointment</button> -->
 
 
 
                         </div>
 
-                        <!-- <div class="margin-bottom-30">
-                            <h4>CERTIFICATIONS</h4>
-                            <div class="border-style-2 margin-bottom-30"></div>
-                            <ul class="list-style margin-left-10">
-                                <li><i class="fa fa-angle-right margin-right-10"></i> Surgical or internal medicine</li>
-                                <li><i class="fa fa-angle-right margin-right-10"></i> Age range of patients</li>
-                                <li><i class="fa fa-angle-right margin-right-10"></i> Diagnostic or therapeutic</li>
-                                <li><i class="fa fa-angle-right margin-right-10"></i> Organ-based or technique-based</li>
-                            </ul>
-                        </div> -->
                     </div>
                 </div>
             </div>

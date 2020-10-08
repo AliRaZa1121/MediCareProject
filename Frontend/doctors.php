@@ -34,6 +34,31 @@ if (isset($_POST['btnsearch'])) {
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 
+<script>
+$(document).ready(function() {
+    $('#doctorcity').on('change', function() {
+        
+        $.get("city.php?cid="+this.value+"", function(data){
+            $("#doctorsgrid").empty().append(data);
+            $("#doctorsgrid").html(data);
+            
+            
+  });
+    });
+});
+</script>
+                            
+                            <div class="col-md-3">
+                                <select id="doctorcity" name="city" class="form-control" >
+                              <option value="" disabled selected>Select City</option>
+                                <?php
+                                $query = $pdo->query("Select * from cities");
+                                $rows = $query->fetchAll(PDO::FETCH_ASSOC);
+                                foreach ($rows as $row): ?>
+                                <option value="<?php echo $row['Id'] ?>"><?php echo $row['Name'] ?></option>
+                                    <?php endforeach; ?>
+                                </select>
+                            </div>
 
 
 <script>
@@ -63,32 +88,7 @@ $(document).ready(function() {
                                 </select>
                             </div>
 
-                            <script>
-$(document).ready(function() {
-    $('#doctorcity').on('change', function() {
-        
-        $.get("city.php?cid="+this.value+"", function(data){
-            $("#doctorsgrid").empty().append(data);
-            $("#doctorsgrid").html(data);
-            
-            
-  });
-    });
-});
-</script>
                             
-                            <div class="col-md-3">
-                                <select id="doctorcity" name="city" class="form-control" >
-                              <option value="" disabled selected>Select City</option>
-                                <?php
-                                $query = $pdo->query("Select * from cities");
-                                $rows = $query->fetchAll(PDO::FETCH_ASSOC);
-                                foreach ($rows as $row): ?>
-                                <option value="<?php echo $row['Id'] ?>"><?php echo $row['Name'] ?></option>
-                                    <?php endforeach; ?>
-                                </select>
-                            </div>
-
                         
 </form>
 

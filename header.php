@@ -18,7 +18,16 @@
   <!-- Custom styles for this template-->
   <link href="Backend/css/sb-admin-2.min.css" rel="stylesheet">
 
- 
+
+<!--bootstrap cdn-->
+<!-- Latest compiled and minified CSS -->
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> -->
+
+<!-- jQuery library -->
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+
+<!-- Latest compiled JavaScript -->
+<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> -->
 </head>
 
 <body id="page-top">
@@ -27,7 +36,7 @@
   <div id="wrapper">
 
     <!-- Sidebar -->
-    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion"" id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
       <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
@@ -90,6 +99,23 @@ if ($_SESSION['utid'] == null) {
       <span>Users</span></a>
   </li>
 
+  <li class="nav-item">
+    <a class="nav-link" href="cities.php">
+      <i class="fas fa-fw fa-location-arrow"></i>
+      <span>Cities</span></a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="newslist.php">
+      <i class="fas fa-newspaper"></i>
+      <span>News/Blogs</span></a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="specialities.php">
+      <i class="fas fa-fw fa-medkit"></i>
+      <span>Specialities</span></a>
+  </li>
+
+
   <!-- Divider -->
   <hr class="sidebar-divider">
 
@@ -100,14 +126,14 @@ if ($_SESSION['utid'] == null) {
 
   <li class="nav-item">
     <a class="nav-link" href="doctoravailability.php">
-      <i class="fas fa-fw fa-user"></i>
+      <i class="fas fa-fw fa-clock"></i>
       <span>Doctors Availability</span></a>
   </li>
 
 
   <li class="nav-item">
     <a class="nav-link" href="appointments.php">
-      <i class="fas fa-fw fa-user"></i>
+      <i class="fas fa-fw fa-file-alt"></i>
       <span>Appointments</span></a>
   </li>
 
@@ -121,12 +147,12 @@ if ($_SESSION['utid'] == null) {
 
 <li class="nav-item">
     <a class="nav-link" href="products.php">
-      <i class="fas fa-fw fa-user"></i>
+      <i class="fas fa-fw fa-shopping-cart"></i>
       <span>Products</span></a>
 
       <li class="nav-item">
     <a class="nav-link" href="categories.php">
-      <i class="fas fa-fw fa-user"></i>
+      <i class="fas fa-fw fa-snowplow"></i>
       <span>Products Categories</span></a>
 
 
@@ -138,42 +164,27 @@ if ($_SESSION['utid'] == null) {
     OTHERS
   </div>
 
-  <li class="nav-item">
-    <a class="nav-link" href="cities.php">
-      <i class="fas fa-fw fa-user"></i>
-      <span>Cities</span></a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="newslist.php">
-      <i class="fas fa-newspaper"></i>
-      <span>News/Blogs</span></a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="specialities.php">
-      <i class="fas fa-fw fa-user"></i>
-      <span>Specialities</span></a>
-  </li>
-  
+
   <li class="nav-item">
     <a class="nav-link" href="adminprofile.php">
       <i class="fas fa-fw fa-user"></i>
       <span>My Profile</span></a>
   </li>
-   
+
   <li class="nav-item">
     <a class="nav-link" href="contact.php">
       <i class="fas fa-inbox"></i>
       <span>Messages</span></a>
   </li>
-  
-  
-  
+
+
+
   <li class="nav-item">
     <a class="nav-link" href="logout.php" onclick="return confirm('Are you sure to logout?');">
-      <i class="fas fa-fw fa-user"></i>
+      <i class="fas fa-fw fa-sign-out-alt"></i>
       <span>Log Out</span></a>
   </li>
-  
+
 <?php } else if(isset($_SESSION['utid']) && $_SESSION['utid'] == 2) { ?>
 
   <!-- Nav Item - Charts -->
@@ -235,7 +246,7 @@ if ($_SESSION['utid'] == null) {
           </button>
 
           <!-- Topbar Search -->
-          
+
           <!-- Topbar Navbar -->
           <ul class="navbar-nav ml-auto">
 
@@ -342,7 +353,7 @@ if ($_SESSION['utid'] == null) {
                 ?>" style="border:2px solid #CCC" width="60" height="60">
               </a>
               <!-- Dropdown - User Information -->
-             
+
             </li>
 
           </ul>

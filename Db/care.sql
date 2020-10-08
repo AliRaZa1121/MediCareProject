@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 04, 2020 at 10:27 AM
+-- Generation Time: Oct 08, 2020 at 07:50 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.6
 
@@ -87,6 +87,13 @@ CREATE TABLE `contactus` (
   `Message` varchar(1000) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `contactus`
+--
+
+INSERT INTO `contactus` (`Id`, `Name`, `Email`, `Subject`, `Message`) VALUES
+(3, 'faizain@gmail.com', 'Faizan', 'dnkvns', ' vsdmvms dv');
+
 -- --------------------------------------------------------
 
 --
@@ -136,10 +143,10 @@ CREATE TABLE `doctors` (
 --
 
 INSERT INTO `doctors` (`Id`, `Name`, `Contact`, `SpecialityId`, `Details`, `Photo`, `CityId`) VALUES
-(14, 'Shahid Ashraf', 3337654321, 3, 'PHD doctor!!!!!!!!!!!!!!!!!', '../uploading/d4.png', 1),
+(14, 'Shahid Ashraf', 3337654321, 3, 'PHD doctor!!!!!!!!', '../uploading/../uploading/d4.png', 1),
 (19, 'Aslamuddin Shah', 3302324221, 4, 'Good Doctor..!!', '../uploading/d3.png', 2),
 (22, 'Rashid Siddique', 3452035987, 5, 'PHD Doctor', 'dr-1.jpg', 3),
-(25, 'Dr Alam', 30312342, 6, 'Good Doctor', 'download.jpg', 2);
+(25, 'Dr Alam', 3123456789, 6, 'Good Doctor', '../uploading/../uploading/download.jpg', 2);
 
 -- --------------------------------------------------------
 
@@ -169,6 +176,53 @@ INSERT INTO `news` (`Id`, `Title`, `ShortDiscription`, `Content`, `Author`, `Pub
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `orderdetails`
+--
+
+CREATE TABLE `orderdetails` (
+  `Id` int(11) NOT NULL,
+  `ProductId` int(11) NOT NULL,
+  `OrderId` int(11) NOT NULL,
+  `Price` float NOT NULL,
+  `Quantity` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `orderdetails`
+--
+
+INSERT INTO `orderdetails` (`Id`, `ProductId`, `OrderId`, `Price`, `Quantity`) VALUES
+(44, 1, 16, 22, 1),
+(45, 4, 16, 10, 2);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `orders`
+--
+
+CREATE TABLE `orders` (
+  `Id` int(11) NOT NULL,
+  `SessionId` varchar(50) NOT NULL,
+  `Amount` varchar(50) DEFAULT NULL,
+  `OrderDate` datetime NOT NULL,
+  `CustomerName` varchar(50) DEFAULT NULL,
+  `Address` varchar(500) DEFAULT NULL,
+  `Email` varchar(50) DEFAULT NULL,
+  `Phone` bigint(20) DEFAULT NULL,
+  `City` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `orders`
+--
+
+INSERT INTO `orders` (`Id`, `SessionId`, `Amount`, `OrderDate`, `CustomerName`, `Address`, `Email`, `Phone`, `City`) VALUES
+(16, 'iqft63bar301a8eaohpt6gdfei', NULL, '2020-10-08 19:19:21', NULL, NULL, NULL, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `patients`
 --
 
@@ -193,6 +247,48 @@ INSERT INTO `patients` (`Id`, `Name`, `Contact`) VALUES
 (36, 'Shah', 9576945),
 (37, 'Huma', 2123456789),
 (38, 'deer', 3001234567);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `productcategories`
+--
+
+CREATE TABLE `productcategories` (
+  `Id` int(11) NOT NULL,
+  `Name` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `productcategories`
+--
+
+INSERT INTO `productcategories` (`Id`, `Name`) VALUES
+(1, 'Antipyretics'),
+(2, 'Paracetamol ');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `products`
+--
+
+CREATE TABLE `products` (
+  `Id` int(11) NOT NULL,
+  `Name` varchar(50) NOT NULL,
+  `Price` int(11) NOT NULL,
+  `CategoryId` int(11) NOT NULL,
+  `Photo` varchar(50) NOT NULL,
+  `Details` varchar(500) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `products`
+--
+
+INSERT INTO `products` (`Id`, `Name`, `Price`, `CategoryId`, `Photo`, `Details`) VALUES
+(1, 'Aspirin', 22, 1, 'Aspirin-Tablets-100mg-10X3-Medipharm-OEM.jpg', 'guhgjhvxsjhc!!!'),
+(4, 'Panadol', 10, 2, 'panadol.jpg', 'jkdbvjksdb');
 
 -- --------------------------------------------------------
 
@@ -318,10 +414,37 @@ ALTER TABLE `news`
   ADD PRIMARY KEY (`Id`);
 
 --
+-- Indexes for table `orderdetails`
+--
+ALTER TABLE `orderdetails`
+  ADD PRIMARY KEY (`Id`),
+  ADD KEY `p1` (`ProductId`),
+  ADD KEY `o1` (`OrderId`);
+
+--
+-- Indexes for table `orders`
+--
+ALTER TABLE `orders`
+  ADD PRIMARY KEY (`Id`);
+
+--
 -- Indexes for table `patients`
 --
 ALTER TABLE `patients`
   ADD PRIMARY KEY (`Id`);
+
+--
+-- Indexes for table `productcategories`
+--
+ALTER TABLE `productcategories`
+  ADD PRIMARY KEY (`Id`);
+
+--
+-- Indexes for table `products`
+--
+ALTER TABLE `products`
+  ADD PRIMARY KEY (`Id`),
+  ADD KEY `categorytoproduct` (`CategoryId`);
 
 --
 -- Indexes for table `specialities`
@@ -363,7 +486,7 @@ ALTER TABLE `cities`
 -- AUTO_INCREMENT for table `contactus`
 --
 ALTER TABLE `contactus`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `doctoravailability`
@@ -378,10 +501,34 @@ ALTER TABLE `news`
   MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
+-- AUTO_INCREMENT for table `orderdetails`
+--
+ALTER TABLE `orderdetails`
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+
+--
+-- AUTO_INCREMENT for table `orders`
+--
+ALTER TABLE `orders`
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
+--
 -- AUTO_INCREMENT for table `patients`
 --
 ALTER TABLE `patients`
   MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+
+--
+-- AUTO_INCREMENT for table `productcategories`
+--
+ALTER TABLE `productcategories`
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `products`
+--
+ALTER TABLE `products`
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `specialities`
@@ -411,6 +558,19 @@ ALTER TABLE `usertypeid`
 ALTER TABLE `appointments`
   ADD CONSTRAINT `ForeingnKey4` FOREIGN KEY (`DoctorId`) REFERENCES `doctors` (`Id`),
   ADD CONSTRAINT `ForeingnKey5` FOREIGN KEY (`PatientId`) REFERENCES `patients` (`Id`);
+
+--
+-- Constraints for table `orderdetails`
+--
+ALTER TABLE `orderdetails`
+  ADD CONSTRAINT `orderid` FOREIGN KEY (`OrderId`) REFERENCES `orders` (`Id`),
+  ADD CONSTRAINT `pid` FOREIGN KEY (`ProductId`) REFERENCES `products` (`Id`);
+
+--
+-- Constraints for table `products`
+--
+ALTER TABLE `products`
+  ADD CONSTRAINT `categorytoproduct` FOREIGN KEY (`CategoryId`) REFERENCES `productcategories` (`Id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

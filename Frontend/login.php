@@ -190,7 +190,7 @@ if(isset($_POST['btnregister']))
                     <div class="col-md-6">
                         <div class="section-title margin-left-20 ">
                             <h6>Get In Touch</h6>
-                            <h2>REGISTER</h2>
+                            <h2>PATIENT REGISTER</h2>
                             <div class="small-line-border-2"></div>
                         </div>
                         <form class="form" method="post" action="" name="registerationform">

@@ -72,7 +72,7 @@ $query->execute();
                                           <div class="form-group">
                                               <div class="col-md-12"><strong>Contact:</strong></div>
                                               <div class="col-md-12">
-                                                  <input type="text" name="contact" class="form-control" value="<?php echo $row['Contact'] ?>"/>
+                                                  <input type="text" name="contact" class="form-control"  pattern="03[0-9]{9}" value="<?php echo $row['Contact'] ?>"/>
                                               </div>
                                           </div>
                                           

@@ -96,7 +96,7 @@ $rows = $query->fetchAll(PDO::FETCH_ASSOC);
                         <div class="shop-banner">
                             <img src="img/shop/bg1.jpg" alt="" />
                         </div>
-                        <div class="shop-tab-area">
+                        
                             <!--NAV PILL-->
                             <!-- <div class="shop-tab-pill">
                                 <ul>
@@ -137,17 +137,19 @@ $rows = $query->fetchAll(PDO::FETCH_ASSOC);
                                 </ul>
                             </div> -->
                             <!--NAV PILL-->
-                            <div class="tab-content">
-                                <div class="row tab-pane active" id="grid">
+                            
                                 
                                 <?php
 
 foreach ($rows as $row) {
-?>
-                                <div class="col-md-4 col-sm-4">
+                            ?>
+                            <div class="shop-tab-area">
+                            <div class="tab-content">
+                                <div class="row tab-pane active" id="grid">
+                            <div class="col-md-4 ">
                                         <div class="product-item">
                                             <div class="product-image">
-                                                <a class="product-img" href="productdetails.php?proid=<?php echo $row['Id'] ?>">
+                                                <a class="product-img" href="productdetails.php?id=<?php echo $row['Id'] ?>">
                                                     <img class="primary-img" src="../uploading/<?php echo $row['Photo'] ?>" alt="" />
                                                 </a>
                                             </div>
@@ -155,10 +157,17 @@ foreach ($rows as $row) {
                                                 <span class="sale-text">Sale</span>
                                             </span> -->
                                             <div class="product-action">
-                                            <h4><a href="productdetails.php?proid=<?php echo $row['Id'] ?>"><?php echo $row['Name'] ?></a></h4>
-                                            <h4><a href="productdetails.php?proid=<?php echo $row['Id'] ?>">(<?php echo $row['CateName'] ?>)</a></h4>
+                                            <h4><a href="productdetails.php?id=<?php echo $row['Id'] ?>"><?php echo $row['Name'] ?></a></h4>
+                                            <h4><a href="productdetails.php?id=<?php echo $row['Id'] ?>">(<?php echo $row['CateName'] ?>)</a></h4>
+                                            <div class="mid-2">
+                                                <span style="margin-left: 90px;" class="price">$ <?php echo $row['Price'] ?></span>
+                                            </div>
+                                             </div>
                                             
-                                                <span style="margin-left: 80px;" class="price">$ <?php echo $row['Price'] ?></span>
+                                             <div>
+                                             <a href="cart.php?id=<?php echo$row['Id']?>&price=<?php echo $row['Price'] ?>&quantity=1"  class="btn btn-simple" style="width: 100%;">Add to Cart</a>
+                                              </div>
+                                           
                                             </div>
 
                                            <!-- <div>
@@ -167,7 +176,7 @@ foreach ($rows as $row) {
                                                         </a>
                                              </div> -->
 
-                                            <div class="pro-action">
+                                            <!-- <div class="pro-action">
                                                 <ul>
                                                     <li>
                                                         <a class="" href="#">
@@ -175,16 +184,17 @@ foreach ($rows as $row) {
                                                         </a>
                                                     </li>
                                                 </ul>
-                                            </div>
+                                            </div> -->
                                         </div>
                                     </div>
+                                    </div>
+                               
+                            </div>
 <?php
 
 }?>
 
-                                </div>
-                               
-                            </div>
+                                
                         </div>
                     </div>
                 </div>
