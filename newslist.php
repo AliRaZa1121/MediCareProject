@@ -14,6 +14,7 @@ $rows = $query->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <?php include("header.php"); ?>
+
         <div class="container-fluid">
 
           <!-- Page Heading -->
@@ -26,7 +27,7 @@ $rows = $query->fetchAll(PDO::FETCH_ASSOC);
 
             <div class="card shadow mb-4">
               <div class="card-header py-3">
-                <a href="addnews.php" class="btn btn-primary">Add New </a>
+                <a href="addnews.php" class="btn btn-primary">Add Post</a>
               </div>
 <hr>
                 <div class="table-responsive">
@@ -55,28 +56,9 @@ foreach ($rows as $row): ?>
       <td><?php echo $row['Title'] ?></td>
       <td><?php echo $row['ShortDiscription'] ?></td>
       <!-- Trigger the modal with a button -->
-<td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">Content</button></td>
-
-<!-- Modal -->
-<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">New Content</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
+<td>
         <?php echo $row['Content'] ?>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
-      
+</td>      
       <td><?php echo $row['Author'] ?></td>
       <td><?php echo $row['PublishedOn'] ?></td>
       <td>

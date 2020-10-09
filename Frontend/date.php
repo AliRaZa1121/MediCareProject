@@ -74,20 +74,42 @@ $exec = $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
    
      -->
+     <form action="" method="POST">
 
+<div class="form-group" >
+    <div class="col-md-12">
+        <strong>Name:</strong>
+        <input type="text" name="name" class="form-control" placeholder="Your Frst Name" value="" />
+    </div>     
+</div>
 
-     <div class="blog-item">
-                <div class="blog-images">
-                    <div class="blog-img"><a href="#"><img src="../uploading/<?php echo $row['Photo'] ?>" alt=""></a></div>
-                </div>
-                <div class="blog-content">
-                    <a href="#"><h4><?php echo $row['Name'] ?></h4></a>
-                    <!-- <a href="#"><h6 class="color-defult text-lowercase"></h6></a>
-                    <div class="blog-date margin-bottom-20 margin-top-30"> -->
-                        <h3>$ <?php echo $row['Price'] ?><sub>/Only</sub></h3>
-                    </div>
-                   
-                    <p style="margin-left: 50px;"><?php echo $row['Details']?>.</p>
-                    <a href="#"  class="btn btn-simple" style="width: 100%;">Add to Cart</a>
-                    
-                </div>
+<div class="form-group">
+    <div class="col-md-12"><strong>City:</strong></div>
+    <div class="col-md-12">
+        <input type="text" name="city" class="form-control" placeholder="Your City"  value="" />
+    </div>
+</div>
+
+<div class="form-group">
+    <div class="col-md-12"><strong>Address:</strong></div>
+    <div class="col-md-12">
+        <input type="text" name="address" class="form-control" placeholder="Your Address"  value="" />
+    </div>
+</div>
+
+<div class="form-group">
+    <div class="col-md-12"><strong>Email Address:</strong></div>
+    <div class="col-md-12"><input type="email" name="email"  placeholder="Your Email Address"  class="form-control" value="" /></div>
+</div>
+
+<div class="form-group">
+    <div class="col-md-12"><strong>Phone Number:</strong></div>
+    <div class="col-md-12"><input type="tel" name="number"  placeholder="Your Email Address"  class="form-control" value="" /></div>
+</div>
+
+<div class="form-group">
+    <div class="col-md-12">
+        <button type="button" name="submit" class="btn btn-theme btn-block">Send</button>
+    </div>
+</div>
+</form>

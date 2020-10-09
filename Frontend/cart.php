@@ -3,7 +3,7 @@ include("dbconnection.php");
 
 session_start();
 $sid = session_id();
-
+$total = "0.00";
 
 
 
@@ -114,7 +114,7 @@ $rows = $query->fetchAll(PDO::FETCH_ASSOC);
           <div class="col-md-12">
            
           <?php
-if (count($rows ) > 0) {
+if (count($rows) > 0) {
           ?>
           
           <div class="product-list">
@@ -132,8 +132,7 @@ if (count($rows ) > 0) {
                 <tbody>
                   
                     <?php foreach ($rows as $row) {
-                      $subtotal = $row['Price'] * $row['Quantity'];
-                      // $total = "0.00";
+                      $subtotal = $row['Price'] * $row['Quantity']; 
                       $total += $subtotal;
                       ?>
                       <tr>    
@@ -151,7 +150,7 @@ if (count($rows ) > 0) {
                       <p>$ <?php echo $row['Price'] ?></p>
                     </td>
                     <td>
-                      <input class="text-center" type="number" value="<?php echo $row['Quantity'] ?>">
+                      <?php echo $row['Quantity']?>
                     </td>
                     <td>
                       <p>$ <?php echo ($row['Price'] * $row['Quantity']) ?></p>
@@ -180,8 +179,6 @@ if (count($rows ) > 0) {
           </div>
 
           <?php
-
-
           $query = $pdo->prepare("select  * from orders
           where SessionId=:sid");
           $query->bindParam("sid",$sid,PDO::PARAM_STR);
@@ -192,7 +189,7 @@ if (count($rows ) > 0) {
           <div class="col-md-12 text-right">
             <ul class="list-inline">
             <li><a href="products.php" class="btn-theme">Continue Shopping</a></li>
-              <li><a href="checkout.php?total=<?php echo $total?>&oid=<?php echo $_SESSION['orderid']?>" class="btn-theme">Go to Checkout</a></li>
+              <li><a href="checkout.php?total=<?php echo $total?>" class="btn-theme">Go to Checkout</a></li>
               <li><a href="deletecart.php?orderid=<?php echo $row['Id']?>" class="btn-theme">Cler Shopping Cart</a></li>
             </ul>
           </div>

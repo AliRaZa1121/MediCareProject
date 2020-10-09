@@ -69,7 +69,6 @@ $(document).ready(function() {
         $.get("speciality.php?sid="+this.value+"", function(data){
             $("#doctorsgrid").empty().append(data);
             $("#doctorsgird").html(data);
-            // alert(data);
             
   });
     });

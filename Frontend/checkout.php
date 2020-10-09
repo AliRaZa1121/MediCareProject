@@ -5,9 +5,8 @@ include("dbconnection.php");
 session_start();
 $sid = session_id();
 $total = $_GET['total'];
-$orderid = $_GET['oid'];
 
-if (isset($_POST['submit'])) {
+if (isset($_POST['send'])) {
     $query = $pdo->prepare("update orders set CustomerName=:CustomerName, Amount=:Amount, Address=:Address, Email=:Email,
     Phone=:Phone, City=:City where SessionId =:sid ");
     $query->bindParam("sid", $sid, PDO::PARAM_STR);
@@ -20,23 +19,27 @@ if (isset($_POST['submit'])) {
    
     $query->execute();
 
+header("location: shoppingdone.php");
+
+}
 ?>
 
 
 
 <?php
-$query = $pdo->prepare("select orderdetails.*, products.Name, products.Photo from orderdetails 
-join products on products.Id = orderdetails.ProductId
-where OrderId =:oid");
-$query->bindParam("oid",$orderid,PDO::PARAM_INT);
+$query = $pdo->prepare("select products.Name,products.Price,products.Photo,
+orderdetails.Id as orderdetailid, orderdetails.ProductId, orderdetails.OrderId,orderdetails.Price, orderdetails.Quantity from products 
+join orderdetails on orderdetails.ProductId = products.Id join Orders on Orders.Id = orderdetails.OrderId
+where SessionId=:sid");
+$query->bindParam("sid",$sid,PDO::PARAM_STR);
 $query->execute();
+
 $rows = $query->fetchAll(PDO::FETCH_ASSOC);
+
+?>
 
  
 
-     
-}
-?>
 <?php include 'header.php'; 
 ?>
 <section class="inner-bg over-layer-black" style="background-image: url('img/bg/4.jpg')">
@@ -75,45 +78,37 @@ $rows = $query->fetchAll(PDO::FETCH_ASSOC);
                                 <div class="panel panel-info panel-border">
                                     <div class="panel-heading panel-bg"><i class="fa fa-map-o"></i> Shipping Address</div>
                                         <div class="panel-body">
-                                        <form action="" method="POST">
+                                        <form class="form" method="post" action="" name="form">
+                          <div class="col-md-12">
+                              <input type="hidden" name="sid" value="">
+                          </div>
+                            <div class="col-md-12">
+                                <input type="text" name="name" class="form-control" placeholder="Enter Your Name" required >
+                            </div>
+                          
+                            <div class="col-md-12">
+                                <input type="email" name="email" class="form-control" placeholder="Enter Your Email" required>
+                            </div>
+                            <div class="col-md-12">
+                                <input type="text" name="city" class="form-control" placeholder="Enter Your City" required >
+                            </div>
+                           
+                            <div class="col-md-12">
+                                <input type="text" name="address" class="form-control" placeholder="Enter Your Address" required >
+                            </div>
+                           
+                            <div class="col-md-12">
+                                <input type="tel" name="number" class="form-control" placeholder="Enter Your Phone Number" required >
+                            </div>
+                           
+                            <div class="col-md-12">
+                                <div class="contact-textarea">
+                                    <button class="btn btn-theme" name="send" style="width: 100px;" type="submit">Place Your Order</button>
+                                </div>
+                            </div>
 
-                                            <div class="form-group" >
-                                                <div class="col-md-12">
-                                                    <strong>Name:</strong>
-                                                    <input type="text" name="name" class="form-control" placeholder="Your Frst Name" value="" />
-                                                </div>     
-                                            </div>
-
-                                            <div class="form-group">
-                                                <div class="col-md-12"><strong>City:</strong></div>
-                                                <div class="col-md-12">
-                                                    <input type="text" name="city" class="form-control" placeholder="Your City"  value="" />
-                                                </div>
-                                            </div>
+                        </form>
                                         
-                                            <div class="form-group">
-                                                <div class="col-md-12"><strong>Address:</strong></div>
-                                                <div class="col-md-12">
-                                                    <input type="text" name="address" class="form-control" placeholder="Your Address"  value="" />
-                                                </div>
-                                            </div>
-                                           
-                                            <div class="form-group">
-                                                <div class="col-md-12"><strong>Email Address:</strong></div>
-                                                <div class="col-md-12"><input type="email" name="email"  placeholder="Your Email Address"  class="form-control" value="" /></div>
-                                            </div>
-
-                                            <div class="form-group">
-                                                <div class="col-md-12"><strong>Phone Number:</strong></div>
-                                                <div class="col-md-12"><input type="tel" name="number"  placeholder="Your Email Address"  class="form-control" value="" /></div>
-                                            </div>
-
-                                            <div class="form-group">
-                                                <div class="col-md-12">
-                                                    <button type="button" name="submit" class="btn btn-theme btn-block">Send</button>
-                                                </div>
-                                            </div>
-                                        </form>
                                         </div>
 
                                 </div>
@@ -242,7 +237,7 @@ $rows = $query->fetchAll(PDO::FETCH_ASSOC);
                     </div>
                 </div>
 
-                <div class="col-md-6 form-horizontal">
+                <div style="margin-top: 70px;" class="col-md-6 form-horizontal">
                     <div class="panel panel-info panel-border margin-top-none">
                         <div class="panel-heading panel-bg">
                             <i class="fa fa-television"></i> Review Order <div class="pull-right"></div>
@@ -251,14 +246,16 @@ $rows = $query->fetchAll(PDO::FETCH_ASSOC);
                         <div class="panel-body">
                             <?php
                             foreach ($rows as $row) {
+                                // $subtotal = $row['Price'] * $row['Quantity'];
+                                // $total += $subtotal;
                             ?>
 
                             <div class="form-group">
                                 <div class="col-sm-3 col-xs-3">
-                                    <img class="img-responsive" src="" />
+                                    <img class="img-responsive" src="../uploading/<?php echo $row['Photo'] ?>" />
                                 </div>
                                 <div class="col-sm-6 col-xs-6">
-                                    <div class="col-xs-12"><?php echo $rows['Name']?></div>
+                                    <div class="col-xs-12"><?php echo $row['Name']?></div>
                                     <div class="col-xs-12"><small>Quantity:<span><?php echo $row['Quantity']?></span></small></div>
                                 </div>
                                 <div class="col-sm-3 col-xs-3 text-right">
