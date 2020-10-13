@@ -35,6 +35,11 @@ include("header.php");
 
 ?>
 
+              <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">ADD NEW DOCTORS</h6>
+              </div>
+
+<hr>
 
 <div class="container">
 
@@ -94,7 +99,7 @@ include("header.php");
 
 
             <div class="form-group">
-              <input type="submit" class="btn btn-primary" name="submit" value="Add Doctor">
+              <input type="submit" class="btn btn-outline-success" name="submit" value="Add Doctor">
             </div>
 
           </form>

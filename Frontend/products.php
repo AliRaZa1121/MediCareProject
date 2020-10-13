@@ -26,76 +26,10 @@ $rows = $query->fetchAll(PDO::FETCH_ASSOC);
     <section class="shop-area">
         <div class="container">
             <div class="row">
-                <div class="col-md-3">
-                    <div class="blog-sideber">
-                        <div class="widget clearfix">
-                            <div class="blog-search">
-                                <form action="#" class="clearfix">
-                                    <input type="search" placeholder="Search Here..">
-                                    <button type="submit">
-                                        <span class="pe-7s-search"></span>
-                                    </button>
-                                </form>
-                            </div>
-                        </div>
-                        <div class="widget clearfix">
-                            <div class="sideber-title">
-                                <h4>Best PRODUCTS</h4>
-                            </div>
-                            <div class="product-item">
-                                <a href="#"><img src="img/shop/b1.jpg" alt="" />
-                                <span>$ 60 /<sub>Only</sub></span>
-                                <p>SAVE UP TO 25% OFF</p>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="widget clearfix">
-                            <div class="sideber-title">
-                                <h4>TOP SELLERS</h4>
-                            </div>
-                            <div class="shop-single-item">
-                                <div class="shop-sell-item">
-                                    <img alt="#" src="img/shop/1.jpg">
-                                </div>
-                                <div class="shop-sell-details">
-                                    <h5><a href="#">Your Title Here</a></h5>
-                                    <h5>$ 50.00</h5>
-                                    <ul>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="widget">
-                                <div class="shop-sell-item">
-                                    <img alt="#" src="img/shop/2.jpg">
-                                </div>
-                                <div class="shop-sell-details">
-                                    <h5><a href="#">Boys T-shirt</a></h5>
-                                    <h5>$ 50.00</h5>
-                                    <ul>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-
-
-
-                    </div>
-                </div>
-                <div class="col-md-9">
+                
+                <div class="col-md-12">
                     <div class="shop-right-area">
-                        <div class="shop-banner">
-                            <img src="img/shop/bg1.jpg" alt="" />
-                        </div>
+            
                         
                             <!--NAV PILL-->
                             <!-- <div class="shop-tab-pill">
@@ -143,14 +77,12 @@ $rows = $query->fetchAll(PDO::FETCH_ASSOC);
 
 foreach ($rows as $row) {
                             ?>
-                            <div class="shop-tab-area">
-                            <div class="tab-content">
-                                <div class="row tab-pane active" id="grid">
-                            <div class="col-md-4 ">
+                           
+                            <div class="col-md-3 ">
                                         <div class="product-item">
                                             <div class="product-image">
                                                 <a class="product-img" href="productdetails.php?id=<?php echo $row['Id'] ?>">
-                                                    <img class="primary-img" src="../uploading/<?php echo $row['Photo'] ?>" alt="" />
+                                                    <img class="primary-img" height="260px" width="260px" src="../uploading/<?php echo $row['Photo'] ?>" alt="" />
                                                 </a>
                                             </div>
                                             <!-- <span class="on-sale">
@@ -186,10 +118,7 @@ foreach ($rows as $row) {
                                                 </ul>
                                             </div> -->
                                         </div>
-                                    </div>
-                                    </div>
-                               
-                            </div>
+                                
 <?php
 
 }?>

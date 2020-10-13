@@ -64,7 +64,7 @@ include("header.php");
 
 
             <div class="form-group">
-              <input type="submit" class="btn btn-primary" name="submit" value="Add Product">
+              <input type="submit" class="btn btn-outline-success" name="submit" value="Add Product">
             </div>
 
           </form>

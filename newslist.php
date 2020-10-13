@@ -15,6 +15,7 @@ $rows = $query->fetchAll(PDO::FETCH_ASSOC);
 
 <?php include("header.php"); ?>
 
+
         <div class="container-fluid">
 
           <!-- Page Heading -->
@@ -27,7 +28,7 @@ $rows = $query->fetchAll(PDO::FETCH_ASSOC);
 
             <div class="card shadow mb-4">
               <div class="card-header py-3">
-                <a href="addnews.php" class="btn btn-primary">Add Post</a>
+                <a href="addnews.php" class="btn btn-outline-success">Add Post</a>
               </div>
 <hr>
                 <div class="table-responsive">
@@ -37,8 +38,6 @@ $rows = $query->fetchAll(PDO::FETCH_ASSOC);
                       <tr>
                         <th>NEWS COVER</th>
                         <th>TITLE</th>
-                        <th>SHORT DISCRIPTION</th>
-                        <th>CONTENT</th>
                         <th>AUTHOR</th>
                         <th>DATE OF PUBLISHED</th>
                         <th class="text-center">Actions</th>
@@ -54,15 +53,10 @@ foreach ($rows as $row): ?>
     <tr>
       <td><img src="uploading/<?php echo $row['NewsCover'] ?>" width="80px" height="80px" style="border-radius:100px" ></td>
       <td><?php echo $row['Title'] ?></td>
-      <td><?php echo $row['ShortDiscription'] ?></td>
-      <!-- Trigger the modal with a button -->
-<td>
-        <?php echo $row['Content'] ?>
-</td>      
       <td><?php echo $row['Author'] ?></td>
       <td><?php echo $row['PublishedOn'] ?></td>
-      <td>
-
+      <td style="text-align: center;">
+      <a href="newsdetail.php?nid=<?php echo $row['Id'] ?>" class="btn btn-warning">Description</a> 
         <a href="newslist.php?id=<?php echo $row['Id'] ?>" class="btn btn-danger" onclick="return confirm('Are you sure to Delete?');">Delete</a>
       </td>
     </tr>

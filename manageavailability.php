@@ -31,7 +31,7 @@ $rows = $query->fetchAll(PDO::FETCH_ASSOC);
 
             <div class="card shadow mb-4">
               <div class="card-header py-3">
-                <a href="addavailability.php" class="btn btn-primary">Add Availability</a>
+                <a href="addavailability.php" class="btn btn-outline-success">Add Availability</a>
               </div>
 
                 <div class="table-responsive">
@@ -56,7 +56,7 @@ foreach ($rows as $row): ?>
       <td><?php echo $row['FromTime'] ?></td>
       <td><?php echo $row['EndTime'] ?></td>
       <td>
-        <a href="editavailability.php?id=<?php echo $row['Id'] ?>" class="btn btn-primary">Edit</a>
+        <a href="editavailability.php?id=<?php echo $row['Id'] ?>" class="btn btn-warning">Edit</a>
         <a href="manageavailability.php?id=<?php echo $row['Id'] ?>" class="btn btn-danger">Delete</a>
       </td>
     </tr>

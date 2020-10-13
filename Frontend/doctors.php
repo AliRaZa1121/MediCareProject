@@ -73,6 +73,7 @@ $(document).ready(function() {
   });
     });
 });
+
 </script>
                            
                            <div class="col-md-3">

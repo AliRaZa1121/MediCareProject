@@ -23,9 +23,11 @@ $row = $query->fetch(PDO::FETCH_ASSOC);
 
 
 <div class="row">
-  <div class="col-md-10" >
-          <a href="editdoctorprofile.php?id=<?php echo $row['Id'] ?>" class="btn btn-primary" style="margin-top:30px">Edit Profile</a>
+  <div class="col-md-10">
+          <a href="editdoctorprofile.php?id=<?php echo $row['Id'] ?>" class="btn btn-outline-success" style="margin-top:30px">Edit Profile</a>
   </div>
+
+
   <div class="col-md-2">
     <div class="form-group">
     <img src="uploading/<?php echo $row['Photo'] ?>" width="130px" height="130px" style="border-radius: 100px;margin-top:-30px" >

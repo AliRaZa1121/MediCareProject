@@ -81,26 +81,26 @@
                 <div class="about-feature style-2">
                     <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
                         <div class="appointment-item">
-                            <h5><a href="#">Our Doctors</a></h5>
+                            <h5><a href="doctors.php">Our Doctors</a></h5>
                             <div class="line-border-center bg-gray margin-bottom-20"></div>
                             <p>Choose by name, specialty, city and more.</p>
-                            <button class="btn btn-theme btn-sm">Find a Doctor</i></button>
+                            <a href="doctors.php"><button class="btn btn-theme btn-sm">Find a Doctor</i></button></a>
                         </div>
                     </div>
                     <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
                         <div class="appointment-item">
-                            <h5><a href="#">Department & Service</a></h5>
+                            <h5><a href="Department.php">Department & Service</a></h5>
                             <div class="line-border-center bg-gray margin-bottom-20"></div>
                             <p>Find maps and more for all locations.</p>
-                            <button class="btn btn-theme btn-sm">Get Directions</button>
+                            <a href="Department.php"> <button class="btn btn-theme btn-sm">Get Directions</button></a>
                         </div>
                     </div>
                     <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 center-block">
                         <div class="appointment-item">
-                            <h5><a href="#">Appointments</a></h5>
+                            <h5><a href="doctors.php">Appointments</a></h5>
                             <div class="line-border-center bg-gray margin-bottom-20"></div>
                             <p>Click in, walk in or call us today.</p>
-                            <button class="btn btn-theme btn-sm">Get Appointment</button>
+                            <a href="doctors.php"><button class="btn btn-theme btn-sm">Get Appointment</button></a>
                         </div>
                     </div>
                 </div>

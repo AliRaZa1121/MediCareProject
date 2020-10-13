@@ -50,7 +50,7 @@ $rows = $query->fetchAll(PDO::FETCH_ASSOC);
 
             <div class="card shadow mb-4">
               <div class="card-header py-3">
-                <a href="addproduct.php" class="btn btn-primary">Add New </a>
+                <a href="addproduct.php" class="btn btn-outline-success">Add New </a>
               </div>
 <hr>
                 <div class="table-responsive">
@@ -83,7 +83,7 @@ foreach ($rows as $row): ?>
       <td ><?php echo $row['Price'] ?></td>
       <td ><?php echo $row['Details'] ?></td>  
       <td style="text-align: center;">
-        <a href="editproduct.php?id=<?php echo $row['Id'] ?>" class="btn btn-primary">Edit</a>
+        <a href="editproduct.php?id=<?php echo $row['Id'] ?>" class="btn btn-warning">Edit</a>
         <a href="products.php?id=<?php echo $row['Id'] ?>" onclick="return confirm('Are you sure to delete Product?');" class="btn btn-danger">Delete</a>
       </td>
     </tr>
@@ -150,7 +150,7 @@ else { ?>
         <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
         <div class="modal-footer">
           <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <a class="btn btn-primary" href="logout.php">Logout</a>
+          <a class="btn btn-outline-success" href="logout.php">Logout</a>
         </div>
       </div>
     </div>

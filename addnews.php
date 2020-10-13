@@ -1,7 +1,7 @@
 <?php
 
 include("dbconnection.php");
-include("header.php");
+
 
 if(isset($_POST['submit']))
 {
@@ -28,7 +28,7 @@ header("location: newslist.php");
 
 ?>
 
-
+<?php include("header.php");?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -83,7 +83,7 @@ header("location: newslist.php");
 
 
             <div class="form-group">
-              <input type="submit" class="btn btn-primary" name="submit" value="Add News">
+              <input type="submit" class="btn btn-outline-success" name="submit" value="Add News">
             </div>
 
           </form>

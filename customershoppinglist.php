@@ -1,11 +1,10 @@
-<?php
-include ('header.php');
-$sid = session_id();
 
+<?php
+include 'dbconnection.php';
 
 $query = $pdo->prepare("Select * from orders
- where SessionId = :sid");
-$query->bindparam("sid",$sid,PDO::PARAM_STR); 
+ where Id = :id");
+$query->bindparam("id",$_GET['id'],PDO::PARAM_INT); 
 $query->execute();
 $row = $query->fetch(PDO::FETCH_ASSOC);
 
@@ -13,81 +12,31 @@ $row = $query->fetch(PDO::FETCH_ASSOC);
 $query = $pdo->prepare("select products.Name,products.Price,products.Photo,
 orderdetails.Id as orderdetailid, orderdetails.ProductId, orderdetails.OrderId,orderdetails.Price, orderdetails.Quantity from products 
 join orderdetails on orderdetails.ProductId = products.Id join Orders on Orders.Id = orderdetails.OrderId
-where SessionId=:sid");
-$query->bindParam("sid",$sid,PDO::PARAM_STR);
+where OrderId=:oid");
+$query->bindParam("oid",$_GET['id'],PDO::PARAM_STR);
 $query->execute();
 
 $orders = $query->fetchAll(PDO::FETCH_ASSOC);
-
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
 
-    <script src=”//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js”></script>
-<script type=”text/javascript” src=”http://cdnjs.cloudflare.com/ajax/libs/jspdf/0.9.0rc1/jspdf.min.js”></script>
+<?php
+include 'header.php';
+?>
 
-<script>
-    var doc = new jsPDF();
-var specialElementHandlers = {
-    '#editor': function (element, renderer) {
-        return true;
-    }
-};
-
-$('#btn').click(function () {
-    doc.fromHTML($('#invoice').html(), 15, 15, {
-        'width': 170,
-            'elementHandlers': specialElementHandlers
-    });
-    doc.save('shoppingslip.pdf');
-});
-</script>
-</head>
-
-
-<body>
-    
-
-
-
-
-<section class="inner-bg over-layer-black" style="background-image: url('img/bg/4.jpg')">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="mini-title inner-style-2">
-                        <h3>Medicative Hospital </h3>
-                        <p><a href="index-one.html">Home</a> <span class="fa fa-angle-right"></span> <a href="#">Shop </a></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-<section style="height: 50px; margin-top: 30px;">
-<div class="alert-success" >
-  <h2 style="text-align: center; font-weight: 500;">Thank you For Shopping, You will recived your order within 24 Hours  ..!!</h2>
-</div>
-</section>
-
-<div class="container" style="background-color:snow;" id="invoice">
+<div class="container">
     <div class="row">
         <div class="col-xs-12">
     		<div class="invoice-title">
-    			<h4>Invoice No:  <?php echo $row['Id']?></h4>
+    			<h2>Order Id = <?php echo $row['Id']?></h3>
     		</div>
     		<hr>
     		<div class="row">
     			<div class="col-xs-6">
     				<address>
     				<strong>Billed To:</strong><br>
-    					Name: <?php echo $row['CustomerName']?><br>
-    					City: <?php echo $row['City']?><br>
-    					Address: <?php echo $row['Address']?>
+    					<?php echo $row['CustomerName']?><br>
+    					<?php echo $row['City']?><br>
+    					<?php echo $row['Address']?>
     				</address>
     			</div>
     		
@@ -114,19 +63,19 @@ $('#btn').click(function () {
     				<div class="table-responsive">
     					<table class="table table-condensed">
     						<thead>
-
-							<tr>
+                           <?php foreach ($orders as $item): ?>
+                                <tr>
+                                      <td><strong>Item Id</strong></td>
                                       <td class="text-center"><strong>Item Name</strong></td>
         							<td class="text-center"><strong>Price</strong></td>
         							<td class="text-center"><strong>Quantity</strong></td>
         							<td class="text-right"><strong>Totals</strong></td>
                                 </tr>
     						</thead>
-
-							<?php foreach ($orders as $item): ?>
     						<tbody>
     							<!-- foreach ($order->lineItems as $line) or some such thing here -->
     							<tr>
+                                     <td><?php echo $item['ProductId'] ?></td>
                                      <td class="text-center"><?php echo $item['Name'] ?></td>
     								<td class="text-center">$<?php echo $item['Price'] ?></td>
     								<td class="text-center"><?php echo $item['Quantity'] ?></td>
@@ -136,11 +85,13 @@ $('#btn').click(function () {
                                
     								<td class="thick-line"></td>
     								<td class="thick-line"></td>
+                                    <td class="thick-line"></td>
                                     
                                     <td class="thick-line text-center"><strong>Sub Total</strong></td>
     								<td class="thick-line text-right">$<?php echo $row['Amount']  ?></td>
     							</tr>
     							<tr>
+    								<td class="no-line"></td>
     								<td class="no-line"></td>
                                     <td class="no-line"></td>
                                     
@@ -149,6 +100,7 @@ $('#btn').click(function () {
                                 </tr>
                                 
     							<tr>
+    								<td class="no-line"></td>
     								<td class="no-line"></td>
                                     <td class="no-line"></td>
                                     
@@ -162,12 +114,9 @@ $('#btn').click(function () {
     			</div>
     		</div>
     	</div>
-	</div>
-	
-    <div id="editor">
-<button class="btn btn-theme" id="btn">Download your Slip</button>
+    </div>
 </div>
-</div>
+
 
 <style>
     .invoice-title h2, .invoice-title h3 {
@@ -187,7 +136,6 @@ $('#btn').click(function () {
 }
 </style>
 
- 
 <?php
 include 'footer.php';
 ?>

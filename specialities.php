@@ -27,7 +27,7 @@ $rows = $query->fetchAll(PDO::FETCH_ASSOC);
 
               <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                  <a href="addspeciality.php" class="btn btn-primary">Add New</a>
+                  <a href="addspeciality.php" class="btn btn-outline-success">Add New</a>
                 </div>
 
                 <div class="table-responsive">

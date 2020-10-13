@@ -24,7 +24,7 @@ include("header.php");
            </div>
 
             <div class="form-group">
-              <input type="submit" class="btn btn-primary" name="submit" value="Insert">
+              <input type="submit" class="btn btn-outline-success" name="submit" value="Insert">
             </div>
 
   </form>

@@ -18,6 +18,8 @@
   <!-- Custom styles for this template-->
   <link href="Backend/css/sb-admin-2.min.css" rel="stylesheet">
 
+  
+
 
 <!--bootstrap cdn-->
 <!-- Latest compiled and minified CSS -->
@@ -75,18 +77,11 @@ if ($_SESSION['utid'] == null) {
 <?php if (isset($_SESSION['utid']) && $_SESSION['utid'] == 1) { ?>
 
   <!-- Nav Item - Pages Collapse Menu -->
+ 
   <li class="nav-item">
-    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+    <a class="nav-link" href="doctors.php">
       <i class="fas fa-user-nurse"></i>
-      <span>Doctors</span>
-    </a>
-    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-      <div class="bg-white py-2 collapse-inner rounded">
-        <h6 class="collapse-header">Doctors:</h6>
-        <a class="collapse-item" href="doctors.php">View Doctors</a>
-        <a class="collapse-item" href="adddoctors.php">Add New</a>
-      </div>
-    </div>
+      <span>Doctors</span></a>
   </li>
 
   <li class="nav-item">
@@ -233,6 +228,7 @@ if ($_SESSION['utid'] == null) {
       
 
     </ul>
+    
     <!-- End of Sidebar -->
 
     <!-- Content Wrapper -->

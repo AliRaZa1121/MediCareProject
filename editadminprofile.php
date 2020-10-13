@@ -47,7 +47,7 @@ include("header.php");
 
 
           <div class="form-group mt-10">
-            <input type="submit" class="btn btn-primary" name="submit" value="Save Changes">
+            <input type="submit" class="btn btn-outline-success" name="submit" value="Save Changes">
           </div>
 
           </form>

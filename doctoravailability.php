@@ -1,16 +1,30 @@
 <?php
 
 include("dbconnection.php");
-include("header.php");
 
-$query = $pdo->prepare("SELECT doctoravailability.*,doctors.name as DName from doctoravailability JOIN doctors on doctoravailability.DoctorId = doctors.id ORDER BY `DName` ASC");
-$suid = $_SESSION['id'];
+
+$query = $pdo->prepare("SELECT doctoravailability.*,doctors.name as DName from doctoravailability JOIN doctors on doctoravailability.DoctorId = doctors.id");
+
 $query->bindparam("id",$suid,PDO::PARAM_INT);
 $query->execute();
 $rows = $query->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
+<?php include("header.php");?>
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.min.css"/>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css"/>
+ 
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js"></script>
 
+</head>
+<script>
+  $(document).ready(function() {
+    $('table').DataTable();
+} );
+</script>
 
 
         <!-- Begin Page Content -->
@@ -35,6 +49,8 @@ $rows = $query->fetchAll(PDO::FETCH_ASSOC);
                         <th>From Time</th>
                         <th>End Time</th>
                         <th>Doctor</th>
+                        <th>Doctor Id</th>
+                        
                       </tr>
                     </thead>
 
@@ -49,6 +65,7 @@ foreach ($rows as $row): ?>
       <td><?php echo $row['FromTime'] ?></td>
       <td><?php echo $row['EndTime'] ?></td>
       <td><?php echo $row['DName'] ?></td>
+      <td><?php echo $row['Id'] ?></td>
     </tr>
 
   <?php endforeach; ?>

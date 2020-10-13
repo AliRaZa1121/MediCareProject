@@ -100,7 +100,7 @@ header("location: newslist.php");
             </div>
 
             <div class="form-group">
-              <input type="submit" class="btn btn-primary" name="submit" value="Save Changes">
+              <input type="submit" class="btn btn-outline-success" name="submit" value="Save Changes">
             </div>
 
           </div>
