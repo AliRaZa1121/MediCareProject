@@ -55,7 +55,7 @@ else if (isset($_SESSION['utid']) && $_SESSION['utid'] == 2){
 
             <div class="card shadow mb-4">
               <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Patients Appointments</h6>
+                <h6 style="font-weight: bold; color: #00b092;">Patients Appointments</h6>
               </div>
               <hr>
 

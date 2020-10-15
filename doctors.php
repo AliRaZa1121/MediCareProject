@@ -82,16 +82,16 @@ foreach ($rows as $row): ?>
 
     <tr>
       
-    <td><?php echo $row['Id'] ?></td>
-      <td><img src="uploading/<?php echo $row['Photo'] ?>" width="80px" height="80px" style="border-radius:100px" ></td>
-      <td><?php echo $row['Name'] ?></td>
-      <td><?php echo $row['UEmail'] ?></td>
-      <td><?php echo $row['Contact'] ?></td>
-      <td><?php echo $row['SpecName'] ?></td>
-      <td><?php echo $row['CityName'] ?></td>
-      <td><?php echo $row['Details'] ?></td>
-      <td>
-        <a href="editdoctor.php?id=<?php echo $row['Id'] ?>" class="btn btn-warning">Edit</a>
+      <td style="line-height: 80px;"><?php echo $row['Id'] ?></td>
+      <td style="line-height: 80px;"><img src="uploading/<?php echo $row['Photo'] ?>" width="80px" height="80px" style="border-radius:100px" ></td>
+      <td style="line-height: 80px;"><?php echo $row['Name'] ?></td>
+      <td style="line-height: 80px;"><?php echo $row['UEmail'] ?></td>
+      <td style="line-height: 80px;"><?php echo $row['Contact'] ?></td>
+      <td style="line-height: 80px;"><?php echo $row['SpecName'] ?></td>
+      <td style="line-height: 80px;"><?php echo $row['CityName'] ?></td>
+      <td style="line-height: 80px;"><?php echo $row['Details'] ?></td>
+      <td style="line-height: 80px;">
+        <a href="editdoctor.php?id=<?php echo $row['Id'] ?>" class="btn btn-info">Edit</a>
         <a href="doctors.php?id=<?php echo $row['Id'] ?>" onclick="return confirm('Are you sure to delete doctor?');" class="btn btn-danger">Delete</a>
       </td>
     </tr>

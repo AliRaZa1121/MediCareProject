@@ -38,13 +38,13 @@ if(isset($_POST['submit']))
             <div class="form-group">
               <label for="">Day</label>
               <select class="form-control" name="day">
-                <option>Monday</option>
-                <option>Tuesday</option>
-                <option>Wednesday</option>
-                <option>Thursday</option>
-                <option>Friday</option>
-                <option>Saturday</option>
-                <option>Sunday</option>
+              <option>Mon</option>
+                <option>Tue</option>
+                <option>Wed</option>
+                <option>Thu</option>
+                <option>Fri</option>
+                <option>Sat</option>
+                <option>Sun</option>
               </select>
             </div>
 

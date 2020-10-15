@@ -63,8 +63,7 @@ include 'header.php';
     				<div class="table-responsive">
     					<table class="table table-condensed">
     						<thead>
-                           <?php foreach ($orders as $item): ?>
-                                <tr>
+							<tr>
                                       <td><strong>Item Id</strong></td>
                                       <td class="text-center"><strong>Item Name</strong></td>
         							<td class="text-center"><strong>Price</strong></td>
@@ -72,6 +71,8 @@ include 'header.php';
         							<td class="text-right"><strong>Totals</strong></td>
                                 </tr>
     						</thead>
+                           <?php foreach ($orders as $item): ?>
+                                
     						<tbody>
     							<!-- foreach ($order->lineItems as $line) or some such thing here -->
     							<tr>

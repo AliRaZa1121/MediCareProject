@@ -83,7 +83,7 @@ foreach ($rows as $row): ?>
       <td ><?php echo $row['Price'] ?></td>
       <td ><?php echo $row['Details'] ?></td>  
       <td style="text-align: center;">
-        <a href="editproduct.php?id=<?php echo $row['Id'] ?>" class="btn btn-warning">Edit</a>
+        <a href="editproduct.php?id=<?php echo $row['Id'] ?>" class="btn btn-info">Edit</a>
         <a href="products.php?id=<?php echo $row['Id'] ?>" onclick="return confirm('Are you sure to delete Product?');" class="btn btn-danger">Delete</a>
       </td>
     </tr>

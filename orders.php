@@ -47,7 +47,7 @@ include 'header.php';
 
             <div class="card shadow mb-4">
               <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Customer</h6>
+                <h6 style="font-weight: bold; color: #00b092;">Customers</h6>
               </div>
 
             <div class="card shadow mb-4">
@@ -87,8 +87,8 @@ foreach ($rows as $row): ?>
       <td><?php echo $row['OrderDate'] ?></td>
       <td><?php echo $row['Amount'] ?></td>
       <td style="text-align: center;">
-        <a href="customershoppinglist.php?id=<?php echo $row['Id'] ?>" class="btn btn-warning">Customer Shopping list</a>
-        <a href="orders.php?id=<?php echo $row['Id'] ?>" onclick="return confirm('Are you sure to delete doctor?');" class="btn btn-danger">Delete</a>
+        <a href="customershoppinglist.php?id=<?php echo $row['Id'] ?>" class="btn btn-info">Customer Shopping list</a>
+        <a href="orders.php?id=<?php echo $row['Id'] ?>" onclick="return confirm('Are you sure to delete Order?');" class="btn btn-danger">Delete</a>
       </td>
     </tr>
 

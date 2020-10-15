@@ -98,7 +98,7 @@ include 'header.php'; ?>
                   ?>
 
                     <div class="team-item-2">
-                        <img src="../uploading/<?php echo $row['Photo'] ?>" alt="">
+                        <img height="470px"; width="370px" src="../uploading/<?php echo $row['Photo'] ?>" alt="">
                         <div class="team-contact">
                             <ul>
                                 <li><a href="#"><i class="fa fa-twitter"></i></a></li>

@@ -19,6 +19,7 @@ $query->execute();
 
 $orders = $query->fetchAll(PDO::FETCH_ASSOC);
 
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -27,25 +28,6 @@ $orders = $query->fetchAll(PDO::FETCH_ASSOC);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
-    <script src=”//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js”></script>
-<script type=”text/javascript” src=”http://cdnjs.cloudflare.com/ajax/libs/jspdf/0.9.0rc1/jspdf.min.js”></script>
-
-<script>
-    var doc = new jsPDF();
-var specialElementHandlers = {
-    '#editor': function (element, renderer) {
-        return true;
-    }
-};
-
-$('#btn').click(function () {
-    doc.fromHTML($('#invoice').html(), 15, 15, {
-        'width': 170,
-            'elementHandlers': specialElementHandlers
-    });
-    doc.save('shoppingslip.pdf');
-});
-</script>
 </head>
 
 
@@ -164,10 +146,7 @@ $('#btn').click(function () {
     	</div>
 	</div>
 	
-    <div id="editor">
-<button class="btn btn-theme" id="btn">Download your Slip</button>
-</div>
-</div>
+
 
 <style>
     .invoice-title h2, .invoice-title h3 {
@@ -190,4 +169,12 @@ $('#btn').click(function () {
  
 <?php
 include 'footer.php';
+?>
+
+<?php
+
+session_unset();
+session_destroy();
+echo $sid;
+
 ?>

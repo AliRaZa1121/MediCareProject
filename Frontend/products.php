@@ -95,10 +95,6 @@ foreach ($rows as $row) {
                                                 <span style="margin-left: 90px;" class="price">$ <?php echo $row['Price'] ?></span>
                                             </div>
                                              </div>
-                                            
-                                             <div>
-                                             <a href="cart.php?id=<?php echo $row['Id']?>&price=<?php echo $row['Price'] ?>&quantity=1"  class="btn btn-simple" style="width: 100%;">Add to Cart</a>
-                                              </div>
                                            
                                             </div>
 

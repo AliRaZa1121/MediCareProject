@@ -179,6 +179,12 @@ if (count($rows) > 0) {
           </div>
 
           <?php
+
+$query = $pdo->prepare("update orders set Amount=:Amount where SessionId =:sid ");
+$query->bindParam("sid", $sid, PDO::PARAM_STR);
+$query->bindParam("Amount", $total, PDO::PARAM_STR);
+$query->execute();
+
           $query = $pdo->prepare("select  * from orders
           where SessionId=:sid");
           $query->bindParam("sid",$sid,PDO::PARAM_STR);
@@ -189,7 +195,7 @@ if (count($rows) > 0) {
           <div class="col-md-12 text-right">
             <ul class="list-inline">
             <li><a href="products.php" class="btn-theme">Continue Shopping</a></li>
-              <li><a href="checkout.php?total=<?php echo $total?>" class="btn-theme">Go to Checkout</a></li>
+              <li><a href="checkout.php" class="btn-theme">Go to Checkout</a></li>
               <li><a href="deletecart.php?orderid=<?php echo $row['Id']?>" class="btn-theme">Cler Shopping Cart</a></li>
             </ul>
           </div>

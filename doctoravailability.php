@@ -35,7 +35,7 @@ $rows = $query->fetchAll(PDO::FETCH_ASSOC);
 
             <div class="card shadow mb-4">
               <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Doctors Availability Status</h6>
+                <h6 style="font-weight: bold; color: #00b092;">Doctors Availability Status</h6>
               </div>
 <hr>
             <div class="card shadow mb-4">

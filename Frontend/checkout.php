@@ -4,15 +4,14 @@ include("dbconnection.php");
 
 session_start();
 $sid = session_id();
-$total = $_GET['total'];
+$total = "0.00";
 
 if (isset($_POST['send'])) {
-    $query = $pdo->prepare("update orders set CustomerName=:CustomerName, Amount=:Amount, Address=:Address, Email=:Email,
+    $query = $pdo->prepare("update orders set CustomerName=:CustomerName, Address=:Address, Email=:Email,
     Phone=:Phone, City=:City where SessionId =:sid ");
     $query->bindParam("sid", $sid, PDO::PARAM_STR);
     $query->bindParam("CustomerName", $_POST['name'], PDO::PARAM_STR);
     $query->bindParam("Email", $_POST['email'], PDO::PARAM_STR);
-    $query->bindParam("Amount", $total, PDO::PARAM_STR);
     $query->bindParam("City", $_POST['city'], PDO::PARAM_STR);
     $query->bindParam("Address", $_POST['address'], PDO::PARAM_STR);
     $query->bindParam("Phone", $_POST['number'], PDO::PARAM_INT);
@@ -27,7 +26,7 @@ header("location: shoppingdone.php");
 
 
 <?php
-$query = $pdo->prepare("select products.Name,products.Price,products.Photo,
+$query = $pdo->prepare("select products.Name,products.Price,products.Photo, orders.Amount,
 orderdetails.Id as orderdetailid, orderdetails.ProductId, orderdetails.OrderId,orderdetails.Price, orderdetails.Quantity from products 
 join orderdetails on orderdetails.ProductId = products.Id join Orders on Orders.Id = orderdetails.OrderId
 where SessionId=:sid");
@@ -156,6 +155,8 @@ $rows = $query->fetchAll(PDO::FETCH_ASSOC);
                                 </div>
                             </div>
                             <?php
+                             $subtotal = $row['Price'] * $row['Quantity']; 
+                             $total += $subtotal;
                             }
                             ?>
                            

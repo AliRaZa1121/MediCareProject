@@ -56,7 +56,7 @@ foreach ($rows as $row): ?>
       <td><?php echo $row['FromTime'] ?></td>
       <td><?php echo $row['EndTime'] ?></td>
       <td>
-        <a href="editavailability.php?id=<?php echo $row['Id'] ?>" class="btn btn-warning">Edit</a>
+        <a href="editavailability.php?id=<?php echo $row['Id'] ?>" class="btn btn-info">Edit</a>
         <a href="manageavailability.php?id=<?php echo $row['Id'] ?>" class="btn btn-danger">Delete</a>
       </td>
     </tr>

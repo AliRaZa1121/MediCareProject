@@ -17,6 +17,7 @@
 
   <!-- Custom styles for this template-->
   <link href="Backend/css/sb-admin-2.min.css" rel="stylesheet">
+  
 
   
 
@@ -333,7 +334,7 @@ if ($_SESSION['utid'] == null) {
                 else {
                   echo "admin.png";
                 }
-                ?>" style="border:2px solid #CCC" width="60" height="60">
+                ?>" style="border:1px solid #CCC" width="60" height="60">
               </a>
               <!-- Dropdown - User Information -->
 
