@@ -18,7 +18,7 @@ if (isset($_POST['send'])) {
    
     $query->execute();
 
-header("location: shoppingdone.php");
+header("location: shoppingover.php");
 
 }
 ?>

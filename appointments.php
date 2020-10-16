@@ -37,6 +37,51 @@ else if (isset($_SESSION['utid']) && $_SESSION['utid'] == 2){
 <script type="text/javascript" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js"></script>
 
+<style>
+.form-control-sm {
+    height: calc(1.5em + .5rem + 2px);
+    padding: .25rem .5rem;
+    font-size: .875rem;
+    line-height: 1.5;
+    border-radius: .2rem;
+    margin-right:20px;
+    
+}
+.custom-select-sm {
+    height: calc(1.5em + .5rem + 2px);
+    padding-top: .25rem;
+    padding-bottom: .25rem;
+    padding-left: .5rem;
+    font-size: .875rem;
+    margin-left:5px;
+
+}
+
+div.dataTables_wrapper div.dataTables_length label {
+    font-weight: normal;
+    text-align: left;
+    margin-left:25px;
+    white-space: nowrap;
+}
+
+div.dataTables_wrapper div.dataTables_length select {
+    width: 60px;
+    display: inline-block;
+}
+
+
+.page-item.active .page-link {
+    z-index: 1;
+    color: #fff;
+    background-color: #00b092;
+    border-color: #00B090;
+}
+
+
+
+</style>
+
+
 </head>
 <script>
   $(document).ready(function() {
@@ -67,6 +112,7 @@ else if (isset($_SESSION['utid']) && $_SESSION['utid'] == 2){
                     <?php if($_SESSION['utid'] == 1){ ?>
                     <thead>
                       <tr>
+                        <th>Patient Id</th>
                         <th>Patient Name</th>
                         <th>Doctor Name</th>
                         <th>Doctor Speciality</th>
@@ -95,6 +141,7 @@ foreach ($rows as $row): ?>
 
   <?php if($_SESSION['utid'] == 1){ ?>
     <tr>
+    <td><?php echo $row['Pid'] ?></td> 
       <td><?php echo $row['PName'] ?></td>
       <td><?php echo $row['DName'] ?></td>
       <td><?php echo $row['SpecName'] ?></td>

@@ -63,8 +63,12 @@ header("location: doctors.php");
   display: none;
 }
 </style>
-
+<div class="card shadow mb-4">
+              <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">EDIT DOCTORS</h6>
+              </div>
 <div class="container">
+
 
   <form class="form" action="" method="post" enctype="multipart/form-data">
 

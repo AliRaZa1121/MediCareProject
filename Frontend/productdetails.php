@@ -49,13 +49,16 @@ $row = $query->fetch(PDO::FETCH_ASSOC);
                    <div class="text-body" style="height: 135px; width: 100%;">
                     <p  style="margin-left: 30px;"><?php echo $row['Details']?>.</p>
                     </div>
-                    <div class="quantity">
-                        <form action="" method="post">
-                        <label>Quantity</label>
-                    <input style="width: 50px;" class="text-center" name="quantity" type="number" value="1">
-                        </form>
-							</div>
-					
+                    <div class="quantity" id="myquantity">
+<div class="quantity-select" onclick="dbupdatequantity(<?php echo $row['Id'] ?>,this)">
+<div class="entry value-minus">&nbsp;</div>
+<div class="entry value">
+<span id="qnt<?php echo $row['Id'] ?>"><?php echo $row['Quantity'] ?></span>
+</div>
+<div class="entry value-plus active">&nbsp;</div>
+</div>
+</div>
+
     <div class="col-sm-4">
                     <a href="cart.php?id=<?php echo$row['Id']?>&price=<?php echo $row['Price'] ?>&quantity=1"  class="btn btn-simple" style="width: 100%;">Add to Cart</a>
     </div>

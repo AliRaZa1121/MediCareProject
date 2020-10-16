@@ -131,7 +131,7 @@ if ($_SESSION['utid'] == null) {
 
   <li class="nav-item">
     <a class="nav-link" href="appointments.php">
-      <i class="fas fa-fw fa-file-alt"></i>
+      <i class="fas fa-fw fa-clipboard-list"></i>
       <span>Appointments</span></a>
   </li>
 
@@ -204,13 +204,13 @@ if ($_SESSION['utid'] == null) {
 
   <li class="nav-item">
     <a class="nav-link" href="appointments.php">
-      <i class="fas fa-fw fa-user"></i>
+      <i class="fas fa-fw fa-clipboard-list"></i>
       <span>Appointments</span></a>
   </li>
 
   <li class="nav-item">
     <a class="nav-link" href="manageavailability.php">
-      <i class="fas fa-fw fa-user"></i>
+      <i class="fas fa-fw fa-clock"></i>
       <span>Manage Availability</span></a>
   </li>
 

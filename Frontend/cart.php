@@ -90,6 +90,91 @@ $rows = $query->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <?php  include 'header.php'; ?>
+<style>
+  /*--quantity-starts--*/
+/* .quantity{
+	margin: 1.5em 0;
+	float:left;
+} */
+ .value-minus,
+.value-plus{
+    height: 40px;
+    line-height: 24px;
+    width: 40px;
+    margin-right: 3px;
+    display: inline-block;
+    cursor: pointer;
+    position: relative;
+    font-size: 18px;
+    color: #fff;
+    text-align: center;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+	border:1px solid #b2b2b2;
+	    vertical-align: bottom;
+}
+.quantity-select .entry.value-minus:before,
+.quantity-select .entry.value-plus:before{
+	content: ""; 
+	width: 13px;
+	height: 2px; 
+	background: #000;
+	left: 50%;
+	margin-left: -7px; 
+	top: 50%;
+	margin-top: -0.5px;
+	position: absolute;
+}
+.quantity-select .entry.value-plus:after{
+	content: "";
+	height: 13px;
+	width: 2px; 
+	background: #000;
+	left: 50%; 
+	margin-left: -1.4px;
+    top: 50%;
+    margin-top: -6.2px;
+	position: absolute;
+}
+.value  {
+    cursor: default;
+    width: 40px;
+	height:40px;
+    padding: 8px 0px;
+    color: #A9A9A9;
+    line-height: 24px;
+    border: 1px solid #E5E5E5;
+    background-color: #E5E5E5;
+    text-align: center;
+    display: inline-block;
+	margin-right: 3px;
+}
+.quantity-select .entry.value-minus:hover,
+ .quantity-select .entry.value-plus:hover{
+	background: #E5E5E5;
+}
+
+.quantity-select .entry.value-minus{
+    margin-left: 0;
+}
+/*--quantity-end--*/
+
+</style>
+
+<script>
+function dbupdatequantity(odid,ele)
+{
+
+	var qt = ele.children[1].innerText;
+	var xhr = new XMLHttpRequest();
+	xhr.open('get','api.php?method=UpdateQuantity&orderdetailid=' + odid + '&quantity=' + qt + '');
+	xhr.onload = function() {
+		console.log(xhr.response);
+	};
+	xhr.send();
+
+}
+</script>
 
 <script src='//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js'></script>
 
@@ -105,6 +190,7 @@ $rows = $query->fetchAll(PDO::FETCH_ASSOC);
             </div>
         </div>
     </section>
+<!--Cart Js-->
 
     
     <!-- SHOPING CART AREA START -->
@@ -150,9 +236,19 @@ if (count($rows) > 0) {
                       <p>$ <?php echo $row['Price'] ?></p>
                     </td>
                     <td>
-                      <?php echo $row['Quantity']?>
-                    </td>
-                    <td>
+                                      <div class="quantity" id="myquantity">
+                  <div class="quantity-select" onclick="dbupdatequantity(<?php echo $row['Id'] ?>,this)">
+                  <div class="entry value-minus">&nbsp;</div>
+                  <div class="entry value">
+                  <span id="qnt<?php echo $row['Id'] ?>"><?php echo $row['Quantity'] ?></span>
+                  </div>
+                  <div class="entry value-plus active">&nbsp;</div>
+                  </div>
+                  </div>
+                  
+                   </td>
+                   
+                   <td>
                       <p>$ <?php echo ($row['Price'] * $row['Quantity']) ?></p>
                     </td>
                     </tr>
