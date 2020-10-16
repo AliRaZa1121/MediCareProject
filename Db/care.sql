@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 08, 2020 at 07:50 PM
+-- Generation Time: Oct 16, 2020 at 03:07 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.6
 
@@ -51,7 +51,10 @@ INSERT INTO `appointments` (`Id`, `Day`, `Date`, `PatientId`, `DoctorId`) VALUES
 (31, 'Wed', '2020-09-30', 28, 14),
 (32, 'Wed', '2020-09-30', 28, 14),
 (33, 'Fri', '2020-10-02', 28, 14),
-(34, 'Thu', '2020-10-08', 21, 19);
+(34, 'Thu', '2020-10-08', 21, 19),
+(35, 'Sat', '2020-10-31', 40, 25),
+(36, 'Wed', '2020-10-14', 23, 14),
+(37, 'Sat', '2020-10-17', 38, 19);
 
 -- --------------------------------------------------------
 
@@ -97,6 +100,24 @@ INSERT INTO `contactus` (`Id`, `Name`, `Email`, `Subject`, `Message`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `details`
+--
+
+CREATE TABLE `details` (
+  `Id` int(11) NOT NULL,
+  `Name` varchar(50) NOT NULL,
+  `Email` varchar(50) NOT NULL,
+  `Phone Number` bigint(20) NOT NULL,
+  `FromTime` varchar(50) NOT NULL,
+  `EndTime` varchar(50) NOT NULL,
+  `FromDay` varchar(50) NOT NULL,
+  `EndDay` varchar(50) NOT NULL,
+  `Location` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `doctoravailability`
 --
 
@@ -114,13 +135,15 @@ CREATE TABLE `doctoravailability` (
 
 INSERT INTO `doctoravailability` (`Id`, `Day`, `FromTime`, `EndTime`, `DoctorId`) VALUES
 (9, 'Sun', '09:00:00', '11:00:00', 14),
-(10, 'Wed', '12:00:00', '15:00:00', 14),
+(10, 'Mon', '12:00:00', '18:00:00', 14),
 (12, 'Mon', '07:00:00', '09:30:00', 15),
 (14, 'Tue', '15:00:00', '18:00:00', 19),
 (15, 'Thu', '18:00:00', '20:00:00', 19),
 (17, 'Fri', '15:00:00', '17:30:00', 14),
 (18, 'Sat', '15:00:00', '17:00:00', 19),
-(19, 'Mon', '18:00:00', '19:30:00', 14);
+(20, 'Wed', '13:00:00', '18:30:00', 19),
+(21, 'Sat', '08:00:00', '20:00:00', 25),
+(22, 'Wed', '08:00:00', '18:00:00', 14);
 
 -- --------------------------------------------------------
 
@@ -146,7 +169,7 @@ INSERT INTO `doctors` (`Id`, `Name`, `Contact`, `SpecialityId`, `Details`, `Phot
 (14, 'Shahid Ashraf', 3337654321, 3, 'PHD doctor!!!!!!!!', '../uploading/../uploading/d4.png', 1),
 (19, 'Aslamuddin Shah', 3302324221, 4, 'Good Doctor..!!', '../uploading/d3.png', 2),
 (22, 'Rashid Siddique', 3452035987, 5, 'PHD Doctor', 'dr-1.jpg', 3),
-(25, 'Dr Alam', 3123456789, 6, 'Good Doctor', '../uploading/../uploading/download.jpg', 2);
+(25, 'Dr Alam', 3212213213, 6, 'Good Doctor!!', '../uploading/../uploading/download.jpg', 2);
 
 -- --------------------------------------------------------
 
@@ -169,9 +192,10 @@ CREATE TABLE `news` (
 --
 
 INSERT INTO `news` (`Id`, `Title`, `ShortDiscription`, `Content`, `Author`, `PublishedOn`, `NewsCover`) VALUES
-(19, 'Pakistan\'s fight against COVID-19: A success story?', 'Picture a developing country facing a mix of social, political and economic troubles. Imagine this country is also faced by intermittent but incessant episodes of social unrest fueled by issues ranging from sectarian violence to gender inequality. Knee-deep in debt, this country also has a weak healthcare system crippled by everything from low budgetary allocation to corruption. What happens when a pandemic hits such a country?', 'The answer to this hypothetical question might not be very pleasing. However, how things have shaped for this country in the real world is nothing short of a miracle. Under the spotlight today is Pakistan – a country that seems to be emerging victorious in its fight against COVID-19 – a pandemic that has brought even the likes of the United States to its knees.\r\n\r\nThe virus started picking up pace in Pakistan in May, with the country reporting between 989 (May 2) and 3,039 (May 30) cases on a daily basis. The peak hit on June 13 when as many as 6,825 cases were reported in a single day. Since the middle of June, the number of new cases has declined steadily, with the figure falling below 1,000 in August and below 600 in September.\r\nThe increase in testing capacity, decrease in number of daily cases and deaths, and mobilization of the state machinery to keep safe a population that does not respond well to government directives were all achieved amid a critical period on the Islamic lunar calendar. The Muslim holy month of fasting, Ramadan, and the ensuing festival, Eid al Fitr, fell in May; one of the largest Muslim festivals involving mass animal slaughter, Eid al Adha, chose the end of July; and the Islamic month of mourning, Muharram, marking the martyrdom anniversary of one of the holiest figures in Islam, began at the end of August.\r\n\r\nThe increase in testing capacity, decrease in number of daily cases and deaths, and mobilization of the state machinery to keep safe a population that does not respond well to government directives were all achieved amid a critical period on the Islamic lunar calendar. The Muslim holy month of fasting, Ramadan, and the ensuing festival, Eid al Fitr, fell in May; one of the largest Muslim festivals involving mass animal slaughter, Eid al Adha, chose the end of July; and the Islamic month of mourning, Muharram, marking the martyrdom anniversary of one of the holiest figures in Islam, began at the end of August.\r\n\r\n', 'Anas Raza', '2020-09-17', '173798.jpg'),
-(21, 'Got fatigue? Study further pinpoints brain regions that may control it', 'Scientists at Johns Hopkins Medicine using MRI scans and computer modeling say they have further pinpointed areas of the human brain that regulate efforts to deal with fatigue.', 'The findings, they say, could advance the development of behavioral and other strategies that increase physical performance in healthy people, and also illuminate the neural mechanisms that contribute to fatigue in people with depression, multiple sclerosis and stroke.\r\n\r\nResults of the research were published online Aug. 12 in Nature Communications.\r\n\r\n\"We know the physiologic processes involved in fatigue, such as lactic acid build-up in muscles, but we know far less about how feelings of fatigue are processed in the brain and how our brain decides how much and what kind of effort to make to overcome fatigue,\" says Vikram Chib, Ph.D., assistant professor of biomedical engineering at the Johns Hopkins University School of Medicine and research scientist at the Kennedy Krieger Institute.\r\n\r\nKnowing the brain regions that control choices about fatigue-moderating efforts can help scientists find therapies that precisely alter those choices, says Chib. \"It might not be ideal for your brain to simply power through fatigue,\" says Chib. \"It might be more beneficial for the brain to be more efficient about the signals it\'s sending.\"\r\n\r\nFor the study, Chib first developed a novel way to objectively quantify how people \"feel\" fatigue, a difficult task because rating systems can vary from person to person. Physicians often ask their patients to rate their fatigue on a scale of 1 to 7, but like pain scales, such ratings are subjective and varied.\r\n\r\nTo standardize the metric for fatigue, Chib asked 20 study participants to make risk-based decisions about exerting a specific physical effort. The average age of participants was 24 and ranged from 18 to 34. Nine of the 20 were female.\r\n\r\nThe 20 participants were asked to grasp and squeeze a sensor after training them to recognize a scale of effort. For example, zero was equal to no effort and 50 units of effort were equal to half the participant\'s maximum force. The participants learned to associate units of effort with how much to squeeze, which helped to standardize the effort level among individuals.\r\n\r\nThe participants repeated the grip exercises for 17 blocks for 10 trials each, until they were fatigued, then were offered one of two choices for making each effort. One was a random (\"risky\") choice based on a coin flip, offering the chance to exert no effort or a predetermined effort level. The other choice was a predetermined set effort level. By introducing uncertainty, the researchers were tapping in to how each subject valued their effort -- a way, in effect, of shedding light on how their brains and minds decided how much effort to make.\r\n\r\nBased on whether the participant chose a risky option versus the predetermined one, the researchers used computerized programs to measure how participants felt about the prospect of exerting particular amounts of effort while they were fatigued.\r\n\r\n\"Unsurprisingly, we found that people tend to be more risk averse -- to avoid -- effort,\" says Chib. Most of the participants (19 of 20) opted for the risk-free choice of a predetermined effort level. This means that, when fatigued, participants were less willing to take the chance of having to exert large amounts of effort.\r\n\r\n\"The predetermined amount had to get pretty high in relative effort for participants to choose the coin toss option,\" says Chib.\r\n\r\nAmong a separate group of 10 people trained on the gripping system but not given numerous, fatiguing trials, there was no significant tendency toward picking either the risky coin toss or defined effort.\r\n\r\nChib\'s research team also evaluated participants\' brain activity during the gripping exercises using functional magnetic resonance imaging (fMRI) scans, which track blood flow through the brain and show which neurons are firing most often.\r\n\r\nChib\'s team confirmed previous findings that brain activity when participants chose between the two options seemed to increase in all participants in an area of the brain\'s known as the insula.\r\n\r\nAlso using fMRI scans, they took a closer look at the motor cortex of the brain when the participants were fatigued. This region of the brain is responsible for exerting the effort itself.\r\n\r\nThe researchers found that the motor cortex was deactivated at the time participants \"decided\" between the two effort choices. That finding is consistent, Chib says, with previous studies showing that when people perform repeated fatiguing exertions, motor cortex activity is decreased, associated with fewer signals being sent down to the muscles.\r\n\r\nParticipants whose motor cortex activity changed the least, in response to fatiguing exertion, were the ones who were most risk averse in their effort choices and were most fatigued. This suggests that fatigue might arise from a miscalibration between what an individual thinks they are able to achieve and the actual activity in motor cortex.\r\n\r\nEssentially, the body attunes to the motor cortex when fatigued, because if the brain kept sending more signals to muscles to act, physiological constraints would begin to take over, for example, increased lactic acid, contributing to even more fatigue.\r\n\r\nThese findings, says Chib, may advance the search for therapies -- physical or chemical -- that target this pathway in healthy people to advance performance and in people with conditions that are associated with fatigue.\r\n\r\nFunding for the research was provided by the Eunice Kennedy Shriver National Institute of Child Health and Human Development of the National Institutes of Health (R01HD097619), the National Institutes of Health\'s National Institute of Mental Health (R56MH113627, R01MH119086).\r\n\r\nIn addition to Chib, other scientists who conducted the study include Patrick Hogan, Steven Chen and Wen Wen Teh from Johns Hopkins.', 'Alex', '2020-09-20', '200826113713_1_540x360.jpg'),
-(22, 'How Dantu blood group protects against malaria, and how all humans could benefit????????', 'The secret of how the Dantu genetic blood variant helps to protect against malaria has been revealed for the first time by scientists at the Wellcome Sanger Institute, the University of Cambridge and the KEMRI-Wellcome Trust Research Programme, Kenya. The team found that red blood cells in people with the rare Dantu blood variant have a higher surface tension that prevents them from being invaded by the world\'s deadliest malaria parasite, Plasmodium falciparum', 'The findings, published today (16 September) in Nature, could also be significant in the wider battle against malaria. Because the surface tension of human red blood cells increases as they age, it may be possible to design drugs that imitate this natural process to prevent malaria infection or reduce its severity.\r\n\r\nMalaria remains a major global health problem causing an estimated 435,000 deaths per year, with 61 per cent occurring in children under five years of age. P. falciparum is responsible for the deadliest form of malaria and is particularly prevalent in Africa, accounting for 99.7 per cent of African malaria cases and 93 per cent of global malaria deaths in 2017.\r\n\r\nIn 2017, researchers discovered that the rare Dantu blood variant, which is found regularly only in parts of East Africa, provides some degree of protection against severe malaria. The intention behind this new study was to explain why.\r\n\r\nRed blood cell samples were collected from 42 healthy children in Kilifi, Kenya, who had either one, two or zero copies of the Dantu gene. The researchers then observed the ability of parasites to invade the cells in the laboratory, using multiple tools including time-lapse video microscopy to identify the specific step at which invasion was impaired.\r\n\r\nAnalysis of the characteristics of the red blood cell samples indicated that the Dantu variant created cells with a higher surface tension -- like a drum with a tighter skin. At a certain tension, malaria parasites were no longer able to enter the cell, halting their lifecycle and preventing their ability to multiply in the blood.\r\n\r\nDr Silvia Kariuki, of the KEMRI-Wellcome Trust Research Programme, Kenya, said: \"Malaria parasites utilise a specific \'lock-and-key\' mechanism to infiltrate human red blood cells. When we set out to explain how the Dantu variant protects against these parasites, we expected to find subtle changes in the way this molecular mechanism works, but the answer turned out to be much more fundamental. The Dantu variant actually slightly increases the tension of the red blood cell surface. It\'s like the parasite still has the key to the lock, but the door is too heavy for it to open.\"\r\n\r\nThe Dantu blood group has a novel \'chimeric\' protein that is expressed on the surface of red blood cells, and alters the balance of other surface proteins. In Kilifi, a town on the Kenyan coast, 10 per cent of the population have one copy of the Dantu gene, which confers up to 40 per cent protection against malaria. One per cent of the population have two copies, conferring up to 70 per cent protection. By contrast, the best malaria vaccines currently provide 35 per cent protection.\r\n\r\nBecause humans have evolved alongside malaria for tens of thousands of years, some people in the worst affected areas have developed genetic resistance to the disease. The most famous example is sickle cell trait, which confers 80 per cent resistance to malaria, but can cause serious illness in those with two copies of the gene. There is currently no evidence that the Dantu variant is accompanied by other health complications.\r\n\r\nDr Alejandro Marin-Menendez, of the Wellcome Sanger Institute, said: \"The fact that we see the most protective adaptations in areas where malaria is most prevalent tells us a lot about how these parasites have influenced human evolution. Malaria is still an incredibly destructive disease, but evolutionary adaptations like sickle cell trait and the Dantu variant may partially explain why the mortality rate is much lower than the rate of infection. We\'ve been fighting malaria parasites for as long as we\'ve been human, so there may be other adaptations and mechanisms yet to be discovered.\"\r\n\r\nResearchers suggest one of the most significant implications of the study stems from the fact that the surface tension of human red blood cells varies naturally, generally increasing during their approximately 90-day lifespan. This means a proportion of all of our red blood cells are naturally resistant to infection by malaria parasites, and it may be possible to develop drugs that take advantage of this process.\r\n\r\nDr Viola Introini, of the University of Cambridge, said: \"The explanation for how Dantu protects against malaria is potentially very important. The red cell membrane only needs to be slightly more tense than usual to block malaria parasites from entering. Developing a drug that emulates this increased tension could be a simple but effective way to prevent or treat malaria. This would depend on the increase in cell tension not having unintended consequences, of course. But evidence from the natural protection already seen in Dantu people, who don\'t seem to suffer negative side effects, is promising.\"\r\n\r\n', 'Benjamin ', '2020-09-20', 'maldownload.jpg');
+(25, 'THIS IS A STANDARD POST WITH IMAGE', 'SOURIAU’s expertise in the medical field is based on over 100 years experience in challenging sectors such as aerospace, defense and high-value precision industry', 'SOURIAU’s expertise in the medical field is based on over 100 years experience in challenging sectors such as aerospace, defense and high-value precision industry. Beyond reliable and safe solutions, we provide you with international support adapted to the most demanding markets. Choosing our range of medical solutions is placing your trust in SOURIAU’s quality and expertise\r\n\r\nOur vast portfolio of medical connectors and cable assembly solutions will help fulfill the design challenges of your medical electronic equipment  whether it requires sealing for wet applications, design durability to withstand the rigors of sterilization or even infallible signal and power performance. For your more complex design needs, we also offer customizable solutions supported by our global team of engineering and product experts.', 'Alex', '2020-10-10', 'banierre.jpg'),
+(26, 'Influenza drug shows promise against SARS-CoV-2', 'Researchers have found that high doses of a drug called favipiravir strongly inhibit SARS-CoV-2 in hamsters. Favipiravir also prevented infection in healthy animals that had exposure to an infected cage mate.', 'It takes many years to develop a potent antiviral drug from scratch for a particular viral infection. Throughout the pandemic of COVID-19 — the disease that SARS-CoV-2 causes — researchers and clinicians have, therefore, had to focus on repurposing existing drugs.\r\n\r\nEarly on in the outbreak, one of the consequences of this was the wide administration of the antimalarial drug hydroxychloroquine to seriously ill patients.\r\n\r\nIn the absence of a proven animal model of COVID-19, doctors were relying on evidence from experiments using cell cultures, which suggested that the drug worked.\r\n\r\nIn June 2020, however, the first conclusive results from clinical research involving humans revealed that hydroxychloroquine was ineffective.\r\n\r\nVirologists at the Rega Institute for Medical Research in Leuven, Belgium, have now developed a model of COVID-19 in Syrian hamsters, which they hope will provide more reliable information before the results of clinical trials become available.\r\n\r\nThey have already used their animal model to test different doses of favipiravir, an antiviral drug that has had approval in Japan since 2014 to treat pandemic influenza infections.', 'Andrew', '2020-10-16', 'GettyImages-1263899936_header-1024x575.jpg'),
+(27, 'Air pollution linked to markers of neurodegenerative disease', 'Scientists recently found that the brains of young people exposed to air pollution display the markers of neurodegenerative diseases in their brain stems.', 'A new study has shown that young adults and children exposed to air pollution have the markers of Alzheimer’s disease, Parkinson’s disease, and motor neuron disease in their brain stems.\r\n\r\nAlongside these markers were nanoparticles that appeared to originate from vehicles’ internal combustion and braking systems.\r\n\r\nThe research, which appears in the journal Environmental Research, highlights the need to do more to protect young people from the effects of air pollution to avoid “a global neurodegenerative epidemic.”', 'Roy', '2020-10-16', 'GettyImages-180408620_header-1024x575.jpg'),
+(28, 'Drinking coffee may protect some people against Parkinson’s', 'A recent study found lower levels of caffeine in the blood of people with Parkinson’s disease. The study compared people with Parkinson’s who carry a particular genetic mutation known to increase Parkinson’s risk with people who carry the same mutation but do not have the disease.\r\n\r\n', 'Parkinson’s disease is a progressive brain disorder characterized by tremors, rigidity in the limbs and torso, and movement and balance problems. People with the condition also have an increased risk of depression and dementia.\r\n\r\nAccording to the U.S. National Library of Medicine, more than 1 million people in North America and more than 4 million people worldwide have Parkinson’s disease. In the United States, about 60,000 people receive a diagnosis each year.\r\n\r\nAround 15% of people with the disease have a family history of Parkinson’s, which suggests they inherited genes that increased their risk of developing the condition. However, most cases result from a complex, poorly understood interaction of genetic and environmental factors.\r\n\r\nSeveral environmental factors, such as head trauma, chemicals, and drugs, have associations with increased risk, whereas exercise has associations with reduced risk.\r\n\r\nA 2010 review of previous research found that the more caffeine people regularly consumed, the lower their risk of developing Parkinson’s.\r\n\r\nAnother study showed that people with Parkinson’s who have no genetic risk factors for the disease have lower caffeine levels in their blood than people without the disease.\r\n\r\nA team led by researchers at Massachusetts General Hospital in Boston, MA, set out to discover whether coffee might also protect people with a mutation in the LRRK2 gene. Having this gene increases the risk of developing the disease but does not guarantee it.\r\n\r\nThe researchers compared people with and without Parkinson’s disease. Both groups contained people with and without a mutation in the LRRK2 gene.\r\n\r\nThe researchers found that the differences in the blood caffeine levels between people with Parkinson’s and those without were greater among individuals with this genetic mutation.\r\n\r\n', 'Dr Grace', '2020-10-16', 'GettyImages-1026611720_header-1024x575.jpg');
 
 -- --------------------------------------------------------
 
@@ -192,8 +216,18 @@ CREATE TABLE `orderdetails` (
 --
 
 INSERT INTO `orderdetails` (`Id`, `ProductId`, `OrderId`, `Price`, `Quantity`) VALUES
-(44, 1, 16, 22, 1),
-(45, 4, 16, 10, 2);
+(58, 1, 25, 22, 3),
+(59, 4, 25, 10, 2),
+(60, 1, 26, 22, 3),
+(62, 4, 28, 10, 2),
+(63, 1, 28, 22, 3),
+(66, 1, 30, 22, 3),
+(67, 4, 30, 10, 2),
+(68, 5, 30, 15, 2),
+(69, 5, 31, 15, 2),
+(70, 8, 32, 30, 1),
+(71, 6, 32, 90, 1),
+(76, 4, 35, 10, 1);
 
 -- --------------------------------------------------------
 
@@ -218,7 +252,14 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`Id`, `SessionId`, `Amount`, `OrderDate`, `CustomerName`, `Address`, `Email`, `Phone`, `City`) VALUES
-(16, 'iqft63bar301a8eaohpt6gdfei', NULL, '2020-10-08 19:19:21', NULL, NULL, NULL, NULL, NULL);
+(25, 'it4o204s2gat6osrjbi4f9gr3g', '42', '2020-10-10 20:48:08', 'Ali Raza', 'DHA Karachi', 'ali@gmail.com', 11223127182, 'Karachi'),
+(26, 'j3mi88bk855hv33m0rj9iqs2dq', '44', '2020-10-12 08:51:16', 'Ali Raza', 'Malir', 'ali@gmail.com', 8078989, 'Karachi'),
+(27, 'd1lm25g2sr13cvo45taa4d6rhj', '44', '2020-10-12 20:48:39', 'Usama', 'Malir', 'usama@gmail.com', 3000000000, 'Karachi'),
+(28, 'qgiitv4tj7scpr13lrmeub79im', '32', '2020-10-13 23:09:19', 'Hassan', 'DHA', 'hassan@gmail.com', 37654321, 'lahore'),
+(30, 'viup5u6obplict4mmdfksainos', '116', '2020-10-14 09:03:44', 'deer', 'korangi', 'deer@gmail.com', 23001, 'Karachi'),
+(31, '0nm0blctom3ldh24c06np3k1og', '30', '2020-10-14 09:53:39', 'Zeeshan', 'Malir', 'zeeshan@gmail.com', 37896543, 'Karachi'),
+(32, 'fj189jc3bofeop06ide78jrh84', '120', '2020-10-16 02:23:12', 'Alam', 'kk', 'alam@gmail.com', 235325, 'lahore'),
+(35, 'oolgf1nage3jk4kgo0pe6eeh3v', '10', '2020-10-16 11:33:56', NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -246,7 +287,9 @@ INSERT INTO `patients` (`Id`, `Name`, `Contact`) VALUES
 (35, 'Hammad', 21400675),
 (36, 'Shah', 9576945),
 (37, 'Huma', 2123456789),
-(38, 'deer', 3001234567);
+(38, 'deer', 3001234567),
+(39, 'Usama', 3123090000),
+(40, 'Unaib', 3101213144);
 
 -- --------------------------------------------------------
 
@@ -265,7 +308,12 @@ CREATE TABLE `productcategories` (
 
 INSERT INTO `productcategories` (`Id`, `Name`) VALUES
 (1, 'Antipyretics'),
-(2, 'Paracetamol ');
+(2, 'Paracetamol '),
+(3, 'A-Hydrocort '),
+(4, 'Abilify (aripiprazole)'),
+(5, 'abciximab-injection'),
+(6, 'acetic acid-otic'),
+(7, 'Adlyxin lixisenatide');
 
 -- --------------------------------------------------------
 
@@ -288,7 +336,11 @@ CREATE TABLE `products` (
 
 INSERT INTO `products` (`Id`, `Name`, `Price`, `CategoryId`, `Photo`, `Details`) VALUES
 (1, 'Aspirin', 22, 1, 'Aspirin-Tablets-100mg-10X3-Medipharm-OEM.jpg', 'guhgjhvxsjhc!!!'),
-(4, 'Panadol', 10, 2, 'panadol.jpg', 'jkdbvjksdb');
+(4, 'Panadol', 10, 2, 'panadol.jpg', 'jkdbvjksdb'),
+(5, 'Panadol Extra', 15, 2, 'Panadol_Extra_Solubles.jpg', 'aa'),
+(6, 'Adlyxin lixisenatide', 90, 7, 'lyxumia-injection-500x500.jpg', 'aaa'),
+(7, 'Hydrocortistone', 60, 6, 'images.jpg', 'aa'),
+(8, 'Reo Pro', 30, 5, '2704-large_default-600x600.jpg', 'aa');
 
 -- --------------------------------------------------------
 
@@ -346,7 +398,9 @@ INSERT INTO `users` (`Id`, `Email`, `Password`, `UserTypeId`) VALUES
 (35, 'hammad@gmail.com', '123', 3),
 (36, 'shah@gmail.com', '123', 3),
 (37, 'hum@gmail.com', '123', 3),
-(38, 'deer@gmail.com', '123', 3);
+(38, 'deer@gmail.com', '123', 3),
+(39, 'usama@gmail.com', '123', 3),
+(40, 'unaib@gmail.com', '123', 3);
 
 -- --------------------------------------------------------
 
@@ -390,6 +444,12 @@ ALTER TABLE `cities`
 -- Indexes for table `contactus`
 --
 ALTER TABLE `contactus`
+  ADD PRIMARY KEY (`Id`);
+
+--
+-- Indexes for table `details`
+--
+ALTER TABLE `details`
   ADD PRIMARY KEY (`Id`);
 
 --
@@ -474,7 +534,7 @@ ALTER TABLE `usertypeid`
 -- AUTO_INCREMENT for table `appointments`
 --
 ALTER TABLE `appointments`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT for table `cities`
@@ -489,46 +549,52 @@ ALTER TABLE `contactus`
   MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
+-- AUTO_INCREMENT for table `details`
+--
+ALTER TABLE `details`
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `doctoravailability`
 --
 ALTER TABLE `doctoravailability`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `news`
 --
 ALTER TABLE `news`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT for table `orderdetails`
 --
 ALTER TABLE `orderdetails`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
 
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT for table `patients`
 --
 ALTER TABLE `patients`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- AUTO_INCREMENT for table `productcategories`
 --
 ALTER TABLE `productcategories`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `specialities`
@@ -540,7 +606,7 @@ ALTER TABLE `specialities`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- AUTO_INCREMENT for table `usertypeid`
