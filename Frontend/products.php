@@ -25,6 +25,7 @@ $rows = $query->fetchAll(PDO::FETCH_ASSOC);
 
     <section class="shop-area">
         <div class="container">
+            
             <div class="row">
                 
                 <div class="col-md-12">

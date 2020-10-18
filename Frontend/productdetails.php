@@ -49,7 +49,7 @@ $row = $query->fetch(PDO::FETCH_ASSOC);
                    <div class="text-body" style="height: 135px; width: 100%;">
                     <p  style="margin-left: 30px;"><?php echo $row['Details']?>.</p>
                     </div>
-                    <div class="quantity id="myquantity">
+                    <div class="quantity">
                         <form action="" method="post">
                         <label>Quantity</label>
                         

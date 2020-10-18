@@ -4,7 +4,6 @@ session_unset();
 session_destroy();
 session_write_close();
 setcookie(session_name(),'',0,'/');
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -49,7 +48,7 @@ setcookie(session_name(),'',0,'/');
 
 
     <!-- Header navbar end -->
-    <div class="coming-soon over-layer-black" id="coming-soon" style="background-image: url('img/bg/3.jpg')">
+    <div class="coming-soon over-layer-black" id="coming-soon" style="background-image: url('img/bg/3.jpg') " >
         <div class="inner-bg">
             <div class="container padding-top-bottom-150">
                 <div class="row">
@@ -61,9 +60,11 @@ setcookie(session_name(),'',0,'/');
                            
                            
                         </div>
+
+        
                         <div class="content">
                             <h2>Thank You For Shopping</h2>
-                            <p> Thank you for your purchase from Medicative Medical Store. <br>Please let us know if we can do anything else to help. Stay tuned!</p>
+                            <p>Thank you for your purchase from Medicative Medical Store. <br>Please let us know if we can do anything else to help. Stay Healthy!</p>
                             <a href="index.php"><button type="submit" class="btn btn-theme hvr-bounce-to-top" data-text="Send Message"><span>Back To Home Page</span></button></a>
                         </div>
                     </div>
@@ -71,16 +72,7 @@ setcookie(session_name(),'',0,'/');
             </div>
         </div>
     </div>
-
-    <section class="footer-copy-right bg-f9">
-      <div class="container">
-        <div class="row">
-          <div class="col-12 text-center">
-            <p><a target="_blank" href="https://www.templateshub.net">Templates Hub</a></p>
-          </div>
-        </div>
-      </div>
-    </section>
+   
     <!-- Footer Style End -->
 
   

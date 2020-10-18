@@ -161,10 +161,12 @@ $rows = $query->fetchAll(PDO::FETCH_ASSOC);
 
 </style>
 
+<script src='//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js'></script> 
+
 <script>
 function dbupdatequantity(odid,ele)
 {
-
+	//console.log(document.getElementById['qnt'].innerText);
 	var qt = ele.children[1].innerText;
 	var xhr = new XMLHttpRequest();
 	xhr.open('get','api.php?method=UpdateQuantity&orderdetailid=' + odid + '&quantity=' + qt + '');
@@ -172,11 +174,11 @@ function dbupdatequantity(odid,ele)
 		console.log(xhr.response);
 	};
 	xhr.send();
-
+	//console.log(qt);
+//	console.log(ultisidhi);
 }
 </script>
 
-<script src='//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js'></script>
 
 <section class="inner-bg over-layer-black" style="background-image: url('img/bg/4.jpg')">
         <div class="container">
@@ -236,15 +238,29 @@ if (count($rows) > 0) {
                       <p>$ <?php echo $row['Price'] ?></p>
                     </td>
                     <td>
-                                      <div class="quantity" id="myquantity">
-                  <div class="quantity-select" onclick="dbupdatequantity(<?php echo $row['Id'] ?>,this)">
-                  <div class="entry value-minus">&nbsp;</div>
-                  <div class="entry value">
-                  <span id="qnt<?php echo $row['Id'] ?>"><?php echo $row['Quantity'] ?></span>
-                  </div>
-                  <div class="entry value-plus active">&nbsp;</div>
-                  </div>
-                  </div>
+                       <div class="quantity" id="myquantity">
+                            <div class="quantity-select" onclick="dbupdatequantity(<?php echo $row['orderdetailid'] ?>,this)">
+                            <div class="entry value-minus">&nbsp;</div>
+                            <div class="entry value">
+                            <span id="qnt<?php echo $row['orderdetailid'] ?>"><?php echo $row['Quantity'] ?></span>
+                            </div>
+                            <div class="entry value-plus active">&nbsp;</div>
+                            </div>
+                            </div>
+
+                  						<!--quantity-->
+	<script>
+    $('.value-plus').on('click', function(){
+    	var divUpd = $(this).parent().find('.value'), newVal = parseInt(divUpd.text(), 10)+1;
+    	divUpd.text(newVal);
+    });
+
+    $('.value-minus').on('click', function(){
+    	var divUpd = $(this).parent().find('.value'), newVal = parseInt(divUpd.text(), 10)-1;
+    	if(newVal>=1) divUpd.text(newVal);
+    });
+	</script>
+	<!--quantity-->
                   
                    </td>
                    
@@ -290,6 +306,7 @@ $query->execute();
           ?>
           <div class="col-md-12 text-right">
             <ul class="list-inline">
+            <li><a href="cart.php" class="btn-theme">Update Cart</a></li>  
             <li><a href="products.php" class="btn-theme">Continue Shopping</a></li>
               <li><a href="checkout.php" class="btn-theme">Go to Checkout</a></li>
               <li><a href="deletecart.php?orderid=<?php echo $row['Id']?>" class="btn-theme">Cler Shopping Cart</a></li>

@@ -26,8 +26,26 @@ $orders = $query->fetchAll(PDO::FETCH_ASSOC);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-
+	<title>Document</title>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.js"></script>
+<Script>
+	window.onload = function () {
+    document.getElementById("download")
+        .addEventListener("click", () => {
+            const invoice = this.document.getElementById("invoice");
+            console.log(invoice);
+            console.log(window);
+            var opt = {
+                margin: 1,
+                filename: 'myfile.pdf',
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scale: 2 },
+                jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+            };
+            html2pdf().from(invoice).set(opt).save();
+        })
+}
+</Script>
 </head>
 
 
@@ -56,10 +74,11 @@ $orders = $query->fetchAll(PDO::FETCH_ASSOC);
 </div>
 </section>
 
-<div class="container" style="background-color:snow;" id="invoice">
-    <div class="row">
-        <div class="col-xs-12">
-    		<div class="invoice-title">
+
+                <div class="container" id="invoice">
+                 
+                    <div class="card-body">
+					<div class="invoice-title">
     			<h4>Invoice No:  <?php echo $row['Id']?></h4>
     		</div>
     		<hr>
@@ -84,7 +103,7 @@ $orders = $query->fetchAll(PDO::FETCH_ASSOC);
     			</div>
     		</div>
     	</div>
-    </div>
+    
     
     <div class="row">
     	<div class="col-md-12">
@@ -142,14 +161,36 @@ $orders = $query->fetchAll(PDO::FETCH_ASSOC);
     					</table>
     				</div>
     			</div>
-    		</div>
-    	</div>
+    		
+                   
+				</div>
+				
+			
+
+	
 	</div>
+	</div>
+	</div>
+
+	    <div class="row">
+	       <div class="col-md-2 ">
+            </div>
+			 <div class="col-md-2 ">
+                <button class="btn btn-theme" id="download"> download pdf</button>
+			 </div>
+			 <div class="col-md-2 ">
+			 <a href="index.php"><button type="submit" class="btn btn-theme hvr-bounce-to-top" data-text="Send Message"><span>Back To Home Page</span></button></a>
+                </div>
+			</div>
+			<hr>
 	
 
 
+</body>
+
 <style>
-    .invoice-title h2, .invoice-title h3 {
+
+.invoice-title h2, .invoice-title h3 {
     display: inline-block;
 }
 
@@ -169,12 +210,11 @@ $orders = $query->fetchAll(PDO::FETCH_ASSOC);
  
 <?php
 include 'footer.php';
-?>
-
-<?php
-
+session_start();
 session_unset();
 session_destroy();
-
-
+session_write_close();
+setcookie(session_name(),'',0,'/');
+session_regenerate_id(true);
 ?>
+

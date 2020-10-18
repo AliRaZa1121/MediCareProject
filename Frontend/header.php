@@ -37,7 +37,7 @@
                 <div class="col-md-8 col-sm-6 welcome-top">
                     <ul class="list-inline top-icon">
                         <li><i class="fa fa-envelope"></i> contact@medicative.com</li>
-                        <li><i class="fa fa-clock-o"></i> Mon - Mon 8.00 AM - 11.00 PM</li>
+                        <li><i class="fa fa-clock-o"></i> Every Day | 8.00 AM - 11.00 PM</li>
                     </ul>
                 </div>
                 <div class="col-md-4 col-sm-6">

@@ -8,7 +8,7 @@ if(isset($_POST['submit']))
 move_uploaded_file($_FILES['photo']["tmp_name"],'uploading/'.$_FILES['photo']["name"]);
 
   $usertypeid = 2;
-  $ranpassword = 123;
+  $ranpassword = rand(1000,100000);
   $sql = "insert into users(Email,Password,UserTypeId) values(:email,:password,:usertypeid)";
   $query = $pdo->prepare($sql);
   $query->bindparam("email",$_POST['email'],PDO::PARAM_STR);
@@ -27,6 +27,27 @@ move_uploaded_file($_FILES['photo']["tmp_name"],'uploading/'.$_FILES['photo']["n
   $query->bindparam("city",$_POST['city'],PDO::PARAM_STR);
   $query->bindparam("photo",$_FILES['photo']['name'],PDO::PARAM_STR);
   $query->execute();
+
+                  $headers = "Content-Type: text/html; charset=UTF-8";
+                  $body = "<html>
+                  <body>
+                  <h1>Hello <span></span>". $_POST['name'] ."</h1> </br>
+                  <p>
+                  My name is Salman and I am Assistant Director & Admin of
+                  Medicative Hospital Website
+                  On behalf of all my colleagues,
+                  I wanted to wish you a warm welcome to the medical register and to your career as doctors,
+                  to say thank you,
+                  and to wish you well for your first days,
+                  weeks and beyond.
+                  </p> </br>
+                  <p>You have to Login on your Dashboard and Edit your Profile nicely..!</p> </br>
+                  <p>Here is Your Dashboard Password</p> <span></span> <h3>". $ranpassword ."</h3>
+                  </body>
+                  </html>";
+
+
+                    $mail = mail($_POST['email'],"Confirmation Email", $body, $headers);
 
   header("location: doctors.php");
 }

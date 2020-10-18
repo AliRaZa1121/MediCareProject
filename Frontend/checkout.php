@@ -18,6 +18,21 @@ if (isset($_POST['send'])) {
    
     $query->execute();
 
+    $headers = "Content-Type: text/html; charset=UTF-8";
+    $body = "<html>
+    <body>
+    <h1>Hello <span></span>". $_POST['name'] ."</h1> </br>
+    <p>
+    We got your order
+    </p></br>
+    <p>It will arrived to your address within 12 hours </p></br>
+    <p>Thank you for your purchase from Medicative Medical Store. Please let us know if we can do anything else to help. Stay Healthy!</p>
+    </body>
+    </html>";
+
+
+      $mail = mail($_POST['email'],"Thank You For Shopping", $body, $headers);
+
 header("location: shoppingover.php");
 
 }
@@ -97,7 +112,7 @@ $rows = $query->fetchAll(PDO::FETCH_ASSOC);
                             </div>
                            
                             <div class="col-md-12">
-                                <input type="tel" name="number" class="form-control" placeholder="Enter Your Phone Number" required >
+                                <input type="tel" name="number" class="form-control" pattern="03[0-9]{9}" placeholder="Enter Your Phone Number" required >
                             </div>
                            
                             <div class="col-md-12">
@@ -148,10 +163,11 @@ $rows = $query->fetchAll(PDO::FETCH_ASSOC);
                                 </div>
                                 <div class="col-sm-6 col-xs-6">
                                     <div class="col-xs-12"><?php echo $row['Name']?></div>
+                                    <div class="col-xs-12"><small>Price:<span><?php echo $row['Price']?></span></small></div>
                                     <div class="col-xs-12"><small>Quantity:<span><?php echo $row['Quantity']?></span></small></div>
                                 </div>
                                 <div class="col-sm-3 col-xs-3 text-right">
-                                    <h5><span>$</span><?php echo $row['Price'] ?></h5>
+                                    <h5><span>$</span><?php echo $row['Price'] * $row['Quantity'] ?></h5>
                                 </div>
                             </div>
                             <?php
