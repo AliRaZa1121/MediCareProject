@@ -27,7 +27,7 @@ include 'header.php';
     <div class="row">
         <div class="col-xs-12">
     		<div class="invoice-title">
-    			<h2>Order Id = <?php echo $row['Id']?></h3>
+    			<h2>Order Id: <?php echo $row['Id']?></h3>
     		</div>
     		<hr>
     		<div class="row">
@@ -35,8 +35,8 @@ include 'header.php';
     				<address>
     				<strong>Billed To:</strong><br>
     					<?php echo $row['CustomerName']?><br>
-    					<?php echo $row['City']?><br>
-    					<?php echo $row['Address']?>
+    					City: <span></span> <?php echo $row['City']?><br>
+    					Address: <span></span> <?php echo $row['Address']?>
     				</address>
     			</div>
     		

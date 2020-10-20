@@ -5,6 +5,7 @@ $msg = "";
 $msg1 ="";
 $error = "";
 $error1 = "";
+             ///////////////Login///////////////
 if(isset($_POST['btnlogin']))
 {
     $query = $pdo->prepare("SELECT users.*,doctors.Name,doctors.Photo from users
@@ -39,6 +40,7 @@ if(isset($_POST['btnlogin']))
     }
 }
 
+              ///////////////Registration///////////////
 if(isset($_POST['btnregister']))
 {
 
@@ -174,10 +176,10 @@ if(isset($_POST['btnregister']))
                             <div class="col-md-12">
                                 <input type="password" name="password" class="form-control" placeholder="Enter Your Password" required >
                             </div>
-                            <!-- <div class="col-md-12" style="margin-bottom: 10px;">
+                            <div class="col-md-12" style="margin-bottom: 10px;">
                            <a href="forgotpassword.php">Forgot Password?</a>     
                            </div>
-                             -->
+                          
                             <div class="col-md-12">
                                 <div class="contact-textarea">
                                     <button class="btn btn-theme" name="btnlogin" type="submit">LOGIN</button>
@@ -195,7 +197,7 @@ if(isset($_POST['btnregister']))
                         </div>
                         <form class="form" method="post" action="" name="registerationform">
                             <div class="col-md-12">
-                                <input type="text" name="name" class="form-control" placeholder="Enter Name" required>
+                                <input type="text" name="name" class="form-control" pattern="[a-zA-Z][a-zA-Z ]{2,}"  placeholder="Enter Name" required>
                             </div>
                             <div class="col-md-12">
                                 <input type="email" name="email" class="form-control" placeholder="Enter Email"  required>

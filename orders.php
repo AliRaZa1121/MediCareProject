@@ -107,10 +107,8 @@ div.dataTables_wrapper div.dataTables_length select {
 
                     <thead>
                       <tr>
-                        <th>Id</th>
-                        <th>CustomerName</th>
+                        <th>Name</th>
                         <th>City</th>
-                        <th>Address</th>
                         <th>Email</th>
                         <th>Contact</th>
                         <th>Order Date</th>
@@ -127,16 +125,15 @@ foreach ($rows as $row): ?>
 
     <tr>
       
-    <td><?php echo $row['Id'] ?></td>
+
       <td><?php echo $row['CustomerName'] ?></td>
       <td><?php echo $row['City'] ?></td>
-      <td><?php echo $row['Address'] ?></td>
       <td><?php echo $row['Email'] ?></td>
       <td><?php echo $row['Phone'] ?></td>
       <td><?php echo $row['OrderDate'] ?></td>
-      <td><?php echo $row['Amount'] ?></td>
+      <td style="text-align: center;"><?php echo $row['Amount'] ?></td>
       <td style="text-align: center;">
-        <a href="customershoppinglist.php?id=<?php echo $row['Id'] ?>" class="btn btn-info">Customer Shopping list</a>
+        <a href="customershoppinglist.php?id=<?php echo $row['Id'] ?>" class="btn btn-info">Customer Invoice</a>
         <a href="orders.php?id=<?php echo $row['Id'] ?>" onclick="return confirm('Are you sure to delete Order?');" class="btn btn-danger">Delete</a>
       </td>
     </tr>

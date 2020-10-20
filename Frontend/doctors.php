@@ -47,10 +47,11 @@ $(document).ready(function() {
     });
 });
 </script>
+
                             
                             <div class="col-md-3">
                                 <select id="doctorcity" name="city" class="form-control" >
-                              <option value="" disabled selected>Select City</option>
+                              <option value="">Select City</option>
                                 <?php
                                 $query = $pdo->query("Select * from cities");
                                 $rows = $query->fetchAll(PDO::FETCH_ASSOC);
@@ -78,7 +79,7 @@ $(document).ready(function() {
                            
                            <div class="col-md-3">
                                 <select id="doctorspec" name="speciality" class="form-control" >
-                              <option value="" disabled selected>Select Doctor Speciality</option>
+                              <option value="" >Select Doctor Speciality</option>
                                 <?php
                                 $query = $pdo->query("Select * from specialities");
                                 $rows = $query->fetchAll(PDO::FETCH_ASSOC);

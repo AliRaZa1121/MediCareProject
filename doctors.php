@@ -3,12 +3,19 @@
 include("dbconnection.php");
 
 //Delete Query
-$query = $pdo->prepare("delete from doctors where Id = :id");
-$query->bindparam("id",$_GET['id'],PDO::PARAM_INT); //for doctor
+
+$query = $pdo->prepare("delete from appointments where DoctorId = :id");
+$query->bindparam("id",$_GET['id'],PDO::PARAM_INT); 
 $query->execute();
+
 $query = $pdo->prepare("delete from users where Id = :id");
-$query->bindparam("id",$_GET['id'],PDO::PARAM_INT); //for doctor
+$query->bindparam("id",$_GET['id'],PDO::PARAM_INT); 
 $query->execute();
+
+$query = $pdo->prepare("delete from doctors where Id = :id");
+$query->bindparam("id",$_GET['id'],PDO::PARAM_INT);
+$query->execute();
+
 
 $query = $pdo->query("SELECT doctors.*,cities.Name as CityName,users.email as UEmail,specialities.Name as SpecName  from doctors
   JOIN users on users.id = doctors.id

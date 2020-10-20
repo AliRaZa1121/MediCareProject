@@ -23,7 +23,7 @@ if (isset($_POST['send'])) {
     <body>
     <h1>Hello <span></span>". $_POST['name'] ."</h1> </br>
     <p>
-    We got your order
+    We got your order 
     </p></br>
     <p>It will arrived to your address within 12 hours </p></br>
     <p>Thank you for your purchase from Medicative Medical Store. Please let us know if we can do anything else to help. Stay Healthy!</p>
@@ -41,6 +41,7 @@ header("location: shoppingover.php");
 
 
 <?php
+
 $query = $pdo->prepare("select products.Name,products.Price,products.Photo, orders.Amount,
 orderdetails.Id as orderdetailid, orderdetails.ProductId, orderdetails.OrderId,orderdetails.Price, orderdetails.Quantity from products 
 join orderdetails on orderdetails.ProductId = products.Id join Orders on Orders.Id = orderdetails.OrderId
@@ -97,7 +98,7 @@ $rows = $query->fetchAll(PDO::FETCH_ASSOC);
                               <input type="hidden" name="sid" value="">
                           </div>
                             <div class="col-md-12">
-                                <input type="text" name="name" class="form-control" placeholder="Enter Your Name" required >
+                                <input type="text" name="name" class="form-control" pattern="[a-zA-Z][a-zA-Z ]{2,}"  placeholder="Enter Your Name" required >
                             </div>
                           
                             <div class="col-md-12">
@@ -131,7 +132,7 @@ $rows = $query->fetchAll(PDO::FETCH_ASSOC);
                             <div class="tab-pane" role="tabpanel" id="complete">
                                 <!--CREDIT CART PAYMENT-->
                                 <div class="panel panel-info panel-border">
-                                    <div class="panel-heading panel-bg"><span><i class="fa fa-check"></i></span>   Complete</div>
+                                    <div class="panel-heading panel-bg"><span><i class="fa fa-check"></i></span>Complete</div>
                                     <div class="panel-body">
                                         <h3>Complete</h3>
                                         <p>You have successfully completed all Shopping.</p>

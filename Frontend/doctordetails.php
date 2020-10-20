@@ -151,7 +151,7 @@ include 'header.php'; ?>
                 </div>
                 <div class="col-md-7 team-area">
                     <div class="team-details-content">
-                        <h2><a href="#"> DR. <?php echo $row['Name'] ?> </a></h2>
+                        <h2><a href="#"> <?php echo $row['Name'] ?> </a></h2>
                         <h6><?php echo $row['SpecName'] ?></h6>
                         
                         <h4>Medical doctor</h4>

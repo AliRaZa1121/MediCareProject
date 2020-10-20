@@ -3,6 +3,7 @@
 include("dbconnection.php");
 include("header.php");
 
+
 if (isset($_SESSION['utid']) && $_SESSION['utid'] == 1) {
 $query = $pdo->query("SELECT appointments.*,patients.Name as PName,patients.Id as Pid,doctors.Name as DName,specialities.Name as SpecName from
 appointments JOIN doctors on doctors.id = appointments.doctorid JOIN patients on patients.id = appointments.patientid
@@ -19,6 +20,8 @@ else if (isset($_SESSION['utid']) && $_SESSION['utid'] == 2){
   $rows = $query->fetchAll(PDO::FETCH_ASSOC);
 
 }
+
+
 
 ?>
 
@@ -118,6 +121,7 @@ div.dataTables_wrapper div.dataTables_length select {
                         <th>Doctor Speciality</th>
                         <th>Date</th>
                         <th>Day</th>
+                        <th>Action</th>
 
                       </tr>
                     </thead>
@@ -147,6 +151,9 @@ foreach ($rows as $row): ?>
       <td><?php echo $row['SpecName'] ?></td>
       <td><?php echo $row['Date'] ?></td>
       <td><?php echo $row['Day'] ?></td>
+      <td>
+      <a href="deleteappointment.php?aid=<?php echo $row['Id'] ?>" onclick="return confirm('Are you sure to delete Record?');" class="btn btn-danger">Delete</a>
+      </td>
     </tr>
   <?php } else if($_SESSION['utid'] == 2){ ?>
     <tr>

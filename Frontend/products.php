@@ -2,12 +2,21 @@
 
 include("dbconnection.php");
 
+if(isset($_GET['btnsearch'])){
+    $query = $pdo->prepare("SELECT products.*,productcategories.Name as CateName from products
+    JOIN productcategories on productcategories.id = products.CategoryId
+    where Products.Name like :keyword");
+    $k = "%" . $_GET['keyword'] . "%";
+    $query->bindvalue("keyword",$k);
+    $query->execute();
+    $rows = $query->fetchAll(PDO::FETCH_ASSOC);  
+}
 
-
+else{
 $query = $pdo->query("SELECT products.*,productcategories.Name as CateName from products
-  JOIN productcategories on productcategories.id = products.CategoryId");
+JOIN productcategories on productcategories.id = products.CategoryId");
 $rows = $query->fetchAll(PDO::FETCH_ASSOC);
-
+}
 ?>
 
 <section class="inner-bg over-layer-black" style="background-image: url('img/bg/4.jpg')">
@@ -25,7 +34,19 @@ $rows = $query->fetchAll(PDO::FETCH_ASSOC);
 
     <section class="shop-area">
         <div class="container">
-            
+            <div class="row">
+                <div style="margin-left: 200px;" class="col-md-8">
+                <div class="blog-search">
+                                <form action="" method="GET" class="clearfix">
+                                    <input name="keyword" type="search" placeholder="Search Here..">
+                                    <button type="submit" value="Search"  name="btnsearch"><span class="pe-search"><i class="fa fa-search"></i></span></button>
+                                </form>
+                            </div>
+                </div>
+            </div>
+            <hr>
+            <hr>
+            <hr>
             <div class="row">
                 
                 <div class="col-md-12">
@@ -75,7 +96,7 @@ $rows = $query->fetchAll(PDO::FETCH_ASSOC);
                             
                                 
                                 <?php
-
+                  if (count($rows)>0) {
 foreach ($rows as $row) {
                             ?>
                            
@@ -99,26 +120,17 @@ foreach ($rows as $row) {
                                            
                                             </div>
 
-                                           <!-- <div>
-                                         <a class="" href="#">
-                                                            <i class="fa fa-shopping-cart" style="" ></i>
-                                                        </a>
-                                             </div> -->
-
-                                            <!-- <div class="pro-action">
-                                                <ul>
-                                                    <li>
-                                                        <a class="" href="#">
-                                                            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </div> -->
+                                
                                         </div>
                                 
 <?php
 
-}?>
+}
+                  }
+                  else{
+                      echo "<h2 class='alert-danger' style='text-align: center'>No Records Found</h2>";
+                  }
+?>
 
                                 
                         </div>

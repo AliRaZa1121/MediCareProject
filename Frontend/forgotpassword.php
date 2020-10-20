@@ -4,22 +4,32 @@ include 'header.php';
 
 include("dbconnection.php");
 
-$pid = $_SESSION['id'];
+$msg = "";
 
-if(isset($_POST['submit']))
-{
-    if($_POST['newpassword'] != $_POST['confirmpassword'] ){
-        $error = "Confirm Password Doesn't Match..!";
-      }
-      else {
-    
-$query = $pdo->prepare("UPDATE users SET Password = :password WHERE id=:id");
-$query->bindparam("id",$pid,PDO::PARAM_INT);
-$query->bindparam("password",$_POST['password'],PDO::PARAM_STR);
-$query->execute();
+if (isset($_POST['submit'])) {
+    $query = $pdo->prepare("select * from users where Email =:email");
+    $query->bindParam("email",$_POST['email'],PDO::PARAM_STR);
+    $query->execute();
+    $row = $query->fetch(PDO::FETCH_ASSOC);
 
-$msg = "Your Password Has been Changed..!!";
-      }
+    $pas = $row['Password'];
+
+    $headers = "Content-Type: text/html; charset=UTF-8";
+    $body = "<html>
+    <body>
+    <h1>Hello</h1> </br>
+    <p>
+    Your Passwrod has been recoverd succesfully & your password is <span></span>". $pas ."
+    </p>
+    </body>
+    </html>";
+
+
+      $mail = mail($_POST['email'],"Password Recover", $body, $headers);
+
+      $msg = "Check Your Email For Your Recoverd Password";
+
+
 }
 
 
@@ -29,39 +39,39 @@ $msg = "Your Password Has been Changed..!!";
     <div class="container">
         <div class="row">
             <div class="col-md-2"></div>
-<?php
 
- ?>
 
             <div class="col-md-8">
                     <div class="tab-content">
                         <div class="tab-pane active" >
                             <div class="panel panel-info panel-border">
-                                <div class="panel-heading panel-bg">Change Password</div>
+                                <div class="panel-heading panel-bg">Recover Your Password</div>
                                     <div class="panel-body">
                                       <form class="form" action="" method="post">
+                                      <div class="row">
+                  <div class="col-md-12">
+              <?php if ($msg!="") { ?>
+                <div class="alert-success"style="text-align: center;">
+                  <?php echo $msg;
+              }
+                  ?>
                                         <div class="form-group">
                                             <div class="col-md-12">
                                                 <input type="hidden" name="id" value="<?php echo $row['Id'] ?>"/>
                                             </div>
                                         </div>
+                                      
                                           <div class="form-group">
-                                              <div class="col-md-12"><strong>New Password:</strong></div>
+                                              <div class="col-md-12"><strong>Your Email:</strong></div>
                                               <div class="col-md-12">
-                                                  <input type="password" name="newpassword" class="form-control" />
-                                              </div>
-                                          </div>
-                                          <div class="form-group">
-                                              <div class="col-md-12"><strong>Confirm Password:</strong></div>
-                                              <div class="col-md-12">
-                                                  <input type="text" name="confirmpassword" class="form-control"/>
+                                                  <input type="text" name="email" class="form-control"/>
                                               </div>
                                           </div>
                                           
                                           
                                           <div class="form-group">
                                               <div class="col-md-12">
-                                                  <button type="submit" class="btn btn-theme btn-block" name="submit">Save Changem</button>
+                                                  <button type="submit" class="btn btn-theme btn-block" name="submit">Find Password</button>
                                               </div>
                                           </div>
                                       </form>

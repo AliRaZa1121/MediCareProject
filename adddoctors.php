@@ -2,6 +2,8 @@
 
 include("dbconnection.php");
 
+//Add Doctor 
+
 if(isset($_POST['submit']))
 {
 
@@ -28,6 +30,7 @@ move_uploaded_file($_FILES['photo']["tmp_name"],'uploading/'.$_FILES['photo']["n
   $query->bindparam("photo",$_FILES['photo']['name'],PDO::PARAM_STR);
   $query->execute();
 
+          //Confirmation Email to Doctor//
                   $headers = "Content-Type: text/html; charset=UTF-8";
                   $body = "<html>
                   <body>
@@ -68,17 +71,17 @@ include("header.php");
 
             <div class="form-group">
               <label for="">Name</label>
-              <input type="text"class="form-control" name="name">
+              <input type="text"class="form-control" pattern="[a-zA-Z][a-zA-Z ]{2,}"  name="name" required>
            </div>
 
            <div class="form-group">
              <label for="">Email</label>
-             <input type="email"class="form-control" name="email">
+             <input type="email"class="form-control" name="email" required>
           </div>
 
            <div class="form-group">
                  <label for="">Contact</label>
-                 <input type="number" class="form-control" name="contact" pattern="03[0-9]{9}">
+                 <input type="number" class="form-control" name="contact" pattern="03[0-9]{9}" required>
               </div>
 
 

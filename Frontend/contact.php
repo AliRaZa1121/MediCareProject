@@ -55,7 +55,7 @@ if(isset($_POST['send']))
                         </div>
                         <form class="form" method="post" action="">
                             <div class="col-md-6">
-                                <input type="text" name="name" class="form-control" placeholder="Your Name" required>
+                                <input type="text" name="name" class="form-control" pattern="[a-zA-Z][a-zA-Z ]{2,}"  placeholder="Your Name" required>
                             </div>
                             <div class="col-md-6">
                                 <input type="email" name="email" class="form-control" placeholder="Your Email"  required>

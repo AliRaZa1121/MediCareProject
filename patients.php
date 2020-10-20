@@ -3,6 +3,12 @@
 include("dbconnection.php");
 
 //Delete Query
+
+
+$query = $pdo->prepare("delete from appointments where PatientId = :id");
+$query->bindparam("id",$_GET['id'],PDO::PARAM_INT); 
+$query->execute();
+
 $query = $pdo->prepare("delete from patients where Id = :id");
 $query->bindparam("id",$_GET['id'],PDO::PARAM_INT); 
 $query->execute();
@@ -11,9 +17,6 @@ $query = $pdo->prepare("delete from users where Id = :id");
 $query->bindparam("id",$_GET['id'],PDO::PARAM_INT); 
 $query->execute();
 
-$query = $pdo->prepare("delete from appointments where PatientId = :id");
-$query->bindparam("id",$_GET['id'],PDO::PARAM_INT); 
-$query->execute();
 
 
 $query = $pdo->query("SELECT patients.*,users.email as PEmail from patients JOIN users on users.id = patients.id ORDER BY `patients`.`Name` ASC");
@@ -56,12 +59,12 @@ if (count($rows)>0) {
 foreach ($rows as $row): ?>
 
     <tr>
-    <td><?php echo $row['Id'] ?></td>
+     <td><?php echo $row['Id'] ?></td>
       <td><?php echo $row['Name'] ?></td>
       <td><?php echo $row['PEmail'] ?></td>
       <td><?php echo $row['Contact'] ?></td>
       <td>
-        <a href="doctors.php?id=<?php echo $row['Id'] ?>" onclick="return confirm('Are you sure to delete patient records?');" class="btn btn-danger">Delete</a>
+        <a href="patients.php?id=<?php echo $row['Id'] ?>" onclick="return confirm('Are you sure to delete patient records?');" class="btn btn-danger">Delete</a>
       </td>
     </tr>
 
